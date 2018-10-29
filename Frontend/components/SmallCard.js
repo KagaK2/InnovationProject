@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
+import {SmallCardStyle} from '../styles/componentstyle.js';
 
 export default class SmallCard extends React.Component {
   constructor(props){
@@ -7,10 +8,10 @@ export default class SmallCard extends React.Component {
   }
   render(){
     return(
-      <View>
-        <Image source={{ uri: this.props.source}} style={{width:100, height:100}}/>
-        <Text>{this.props.date}</Text>
-        <Text>{this.props.eventName}</Text>
+      <View style={SmallCardStyle.card}>
+        <Image source={{ uri: this.props.source}} style={SmallCardStyle.image}/>
+        <Text style={SmallCardStyle.date}>{this.props.date}</Text>
+        <Text style={SmallCardStyle.title}>{this.props.eventName}</Text>
       </View>
     );
   }

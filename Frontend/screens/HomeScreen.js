@@ -27,10 +27,12 @@ export default class HomeScreen extends React.Component {
         </View>
         <View>
           <Text> Nearby Activities</Text>
-          <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
-          <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
-          <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
-          <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
+          <View style={{flexDirection: 'row',flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', marginRight: 23}}>
+            <SmallCard source='https://i.imgur.com/eEnMLyt.png' date='Oct 21' eventName='Do whatever'/>
+            <SmallCard source='https://i.imgur.com/eEnMLyt.png' date='Oct 21' eventName='Do whatever'/>
+            <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
+            <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
+          </View>
         </View>
       </ScrollView>
     );
