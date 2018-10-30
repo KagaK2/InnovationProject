@@ -11,7 +11,11 @@ export const HomeScreenStyle = StyleSheet.create({
 export const CalendarScreenStyle = StyleSheet.create({
   appBody: {
     marginHorizontal: 8,
-  }
+    paddingTop: 50,
+  },
+  list: {
+    alignItems: 'center',
+  },
 });
 export const ProfileScreenStyle = StyleSheet.create({
   image: {

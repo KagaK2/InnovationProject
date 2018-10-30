@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import {SwitchNav} from './router/appRouter';
-
+import {Styles} from './styles/componentstyle.js';
 export default class App extends React.Component {
   render() {
     return (
-      <SwitchNav />
+      <SwitchNav/>
     );
   }
 }

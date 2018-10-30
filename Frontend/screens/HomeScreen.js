@@ -24,6 +24,10 @@ export default class HomeScreen extends React.Component {
       <ScrollView style={Styles.colorBody}>
         <View style={Styles.appBody}>
           <View>
+            <Text style={Styles.headline}>Home</Text>
+            <Text style={Styles.largeBody}>Here is your discovery queue today.</Text>
+          </View>
+          <View>
             <Text style={Styles.subheader}> Right here right now </Text>
             <HomeCarousel onPress = {this._direct} />
           </View>

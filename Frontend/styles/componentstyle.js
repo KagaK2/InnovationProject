@@ -35,6 +35,7 @@ export const Styles = StyleSheet.create({
   },
   appBody: {
     marginLeft: 24,
+    paddingTop: 50,
   },
   colorBody: {
     backgroundColor: 'white',
@@ -63,11 +64,12 @@ export const SmallCardStyle = StyleSheet.create({
   card: {
     marginRight:8,
     marginBottom:8,
+    width: '45%',
   },
   image : {
     borderRadius: 4,
     borderWidth: 0.01,
-    width: 135,
+    width: '100%',
     height: 119,
   },
   date : {
@@ -94,11 +96,12 @@ export const ThumbnailCardStyle = StyleSheet.create({
   card: {
     marginRight:8,
     marginBottom:8,
+    width: '45%',
   },
   image: {
     borderRadius: 4,
     borderWidth: 0.01,
-    width: 135,
+    width: '100%',
     height: 135,
     alignItems: 'center',
     justifyContent: 'center',
@@ -108,11 +111,14 @@ export const BigCardStyle = StyleSheet.create({
   card: {
     paddingVertical: 16,
     marginBottom: 5,
+    width: '90%',
+    borderWidth: 0.01,
   },
   image: {
-    width: 300,
+    width: '100%',
     height: 160,
     marginVertical: 16,
+    //resizeMode: 'stretch',
   },
   hashtagdate: {
     flexDirection: 'row',

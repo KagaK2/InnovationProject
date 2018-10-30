@@ -9,8 +9,8 @@ export default class ThumbnailCard extends React.Component{
 
   render(){
     return(
-      <TouchableWithoutFeedback onPress={this.props.onPress} style={ThumbnailCardStyle.card}>
-      <View>
+      <TouchableWithoutFeedback onPress={this.props.onPress} >
+      <View style={ThumbnailCardStyle.card}>
         <View>
           <ImageBackground source={{uri: this.props.pic}} style={ThumbnailCardStyle.image} >
           <Text style={{fontSize: 14, color: '#FFFFFF', fontWeight:'bold'}}>{this.props.title}</Text>
