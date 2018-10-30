@@ -29,7 +29,7 @@ export default class HomeScreen extends React.Component {
           </View>
           <View>
             <Text style={Styles.subheader}> Nearby Activities</Text>
-            <View style={{flexDirection: 'row',flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'center'}}>
+            <View style={Styles.list}>
               <SmallCard source='https://i.imgur.com/eEnMLyt.png' date='Oct 21' eventName='Do whatever'/>
               <SmallCard source='https://i.imgur.com/eEnMLyt.png' date='Oct 21' eventName='Do whatever'/>
               <SmallCard source='https://img.youtube.com/vi/D9ioyEvdggk/hqdefault.jpg' date='Oct 21' eventName='Do whatever'/>
@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component {
           </View>
           <View>
             <Text style={Styles.subheader}>Explore by topics!</Text>
-            <View style={{flexDirection: 'row',flexWrap: 'wrap', justifyContent: 'flex-start', alignItems: 'center'}}>
+            <View style={Styles.list}>
               <ThumbnailCard pic='https://i.imgur.com/eEnMLyt.png' title='Some random Ahri stuff'/>
               <ThumbnailCard pic='https://i.imgur.com/eEnMLyt.png' title='Some random Ahri stuff'/>
               <ThumbnailCard pic='https://i.imgur.com/eEnMLyt.png' title='Some random Ahri stuff'/>

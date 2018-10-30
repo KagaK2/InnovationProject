@@ -1,32 +1,63 @@
 import React from 'react';
-import {View, Text, Button, AsyncStorage, Image} from 'react-native';
-
-
+import {View, Text, Button, AsyncStorage, Image, ScrollView, Switch, TouchableOpacity} from 'react-native';
+import {ProfileScreenStyle} from '../styles/screenstyle.js';
+import {Styles} from '../styles/componentstyle.js';
 
 
 export default class ProfileScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
   static navigationOptions = { header: null };
   render(){
     return(
-      <View>
-      <View id='userLogo'>
-        <Text> This is the Profile screen </Text>
-        <Image source={{uri: this.props.profile}} style={{height: 80, width: 80}}/>
-        <Text> This is the username </Text>
-        <Text> This is the user title </Text>
+      <ScrollView style={Styles.colorBody}>
+      <View style={Styles.appBody}>
+      <View id='userLogo' style={ProfileScreenStyle.userLogo}>
+        <Image source={{uri: 'https://i.imgur.com/uR8i9g3.png'}} style={ProfileScreenStyle.image}/>
+        <Text style={Styles.headline}> Khanh Phan </Text>
+        <Text style={Styles.secondBody}> This is the user title </Text>
       </View>
 
       <View id='accSettings'>
-        <Text> Account Settings </Text>
+        <Text style={Styles.subheader}> Account Settings </Text>
         <View id='interest'>
-          <Text> Interests </Text>
+          <Text style={[Styles.largeBody,ProfileScreenStyle.interest]}> Interests </Text>
+          <View style={[Styles.list,ProfileScreenStyle.interest]}>
+            <View style={Styles.tags}>
+            <Text>#idk</Text>
+            </View>
+            <View style={Styles.tags}>
+            <Text>#what</Text>
+            </View>
+            <View style={Styles.tags}>
+            <Text>#to</Text>
+            </View>
+            <View style={Styles.tags}>
+            <Text>#expect</Text>
+            </View>
+            <TouchableOpacity onPress={this.signOut.bind(this)} style={Styles.jumbo}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>+</Text></TouchableOpacity>
+          </View>
         </View>
         <View id='generalSettings'>
-          <Text> General Settings </Text>
+          <Text style={[Styles.largeBody, ProfileScreenStyle.generalSettings]}> General Settings </Text>
+          <View style={{flexDirection: 'row'}}>
+            <Text> Alert me when I'm near an event </Text>
+            <Switch/>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text> Other people can see my profile </Text>
+            <Switch/>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text> Allow location sharing </Text>
+            <Switch/>
+          </View>
         </View>
       </View>
-      <Button onPress={this.signOut.bind(this)} title='Sign out' />
+      <TouchableOpacity onPress={this.signOut.bind(this)} style={Styles.jumbo}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>Signout</Text></TouchableOpacity>
       </View>
+      </ScrollView>
     );
   }
   async signOut() {

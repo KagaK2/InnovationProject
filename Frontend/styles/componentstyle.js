@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 export const Styles = StyleSheet.create({
   headline: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
   },
   title: {
@@ -44,6 +44,19 @@ export const Styles = StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: '#FFA06E',
     borderRadius: 4,
+  },
+  tags: {
+    backgroundColor: 'grey',
+    padding: 8,
+    borderRadius: 50,
+    borderWidth: 0.01,
+    marginRight: 5,
+  },
+  list: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
 });
 export const SmallCardStyle = StyleSheet.create({
