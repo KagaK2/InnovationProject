@@ -1,5 +1,6 @@
 import React from 'react';
 import {TouchableWithoutFeedback, View, Text, Image} from 'react-native';
+import {Styles, BigCardStyle} from '../styles/componentstyle.js';
 
 export default class BigCard extends React.Component {
   constructor(props){
@@ -8,12 +9,14 @@ export default class BigCard extends React.Component {
   render(){
     return(
       <TouchableWithoutFeedback onPress={this.props.onPress}>
-        <View>
-        <Text>#{this.props.hashtag}</Text>
-        <Text>{this.props.date}</Text>
-        <Text>{this.props.eventName}</Text>
-        <Image source={{uri: this.props.pic}}  style={{height:200, width: 200}} />
-        <Text>{this.props.going} are going</Text>
+        <View style={BigCardStyle.card}>
+          <View style={BigCardStyle.hashtagdate}>
+            <Text style={Styles.largeBody}>#{this.props.hashtag}</Text>
+            <Text style={Styles.secondBody}>•{this.props.date}</Text>
+          </View>
+          <Text style={[Styles.title, BigCardStyle.titleText]}>{this.props.eventName}</Text>
+          <Image source={{uri: this.props.pic}} style={BigCardStyle.image}/>
+          <Text style={[Styles.secondBody, BigCardStyle.going]}>{this.props.going} are going</Text>
         </View>
       </TouchableWithoutFeedback>
     );
