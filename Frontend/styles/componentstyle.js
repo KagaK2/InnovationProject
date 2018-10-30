@@ -34,7 +34,7 @@ export const Styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   appBody: {
-    marginLeft: 24,
+    marginLeft: 16,
     paddingTop: 50,
   },
   colorBody: {
@@ -43,15 +43,22 @@ export const Styles = StyleSheet.create({
   jumbo: {
     paddingVertical: 8,
     paddingHorizontal: 16,
-    backgroundColor: '#FFA06E',
+    borderRadius: 4,
+  },
+  bigJumbo: {
+    paddingVertical: 16,
+    paddingHorizontal: 64,
     borderRadius: 4,
   },
   tags: {
-    backgroundColor: 'grey',
+    backgroundColor: '#FFA06E',
     padding: 8,
     borderRadius: 50,
     borderWidth: 0.01,
     marginRight: 5,
+  },
+  tagText: {
+    color: "#FFFFFF",
   },
   list: {
     flexDirection: 'row',
@@ -85,12 +92,15 @@ export const CarouselCardStyle = StyleSheet.create({
     width: '90%',
   },
   image: {
-    width: 300,
+    width: 250,
     height: 130,
     margin: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: '#FFFFFF',
+  }
 });
 export const ThumbnailCardStyle = StyleSheet.create({
   card: {

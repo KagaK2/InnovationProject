@@ -1,17 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, AsyncStorage } from 'react-native';
-
+import { StyleSheet, Text, View, ImageBackground, Alert, AsyncStorage, Image, TouchableOpacity } from 'react-native';
+import {Styles} from '../styles/componentstyle.js';
+import {LoginScreenStyle} from '../styles/screenstyle.js';
 export default class LogInScreen extends React.Component{
   static navigationOptions = { header: null };
   render(){
     return(
-    <View>
-      <Text> Đây là logo app </Text>
-      <Text> Đây là tên App </Text>
+    <ImageBackground source={{uri: 'https://i.imgur.com/Q70lyeL.jpg'}} style={{flex:1, height:'100%', width:'100%'}}>
+    <View style={LoginScreenStyle.page}>
       <View>
-      <Button onPress={this.logIn.bind(this)} title='Connect with Facebook'/>
+        <Image source={{uri: 'https://i.imgur.com/wcJMsY2.jpg'}} style={LoginScreenStyle.image}/>
+      </View>
+      <View style={{alignItems : 'flex-start', justifyContent: 'flex-end'}}>
+      <TouchableOpacity onPress={this.logIn.bind(this)} style={[Styles.bigJumbo,LoginScreenStyle.loginButton]}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>Connect With Facebook</Text></TouchableOpacity>
       </View>
     </View>
+    </ImageBackground>
   );
   }
   async logIn(props) {

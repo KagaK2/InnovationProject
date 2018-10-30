@@ -25,37 +25,39 @@ export default class ProfileScreen extends React.Component {
           <Text style={[Styles.largeBody,ProfileScreenStyle.interest]}> Interests </Text>
           <View style={[Styles.list,ProfileScreenStyle.interest]}>
             <View style={Styles.tags}>
-            <Text>#idk</Text>
+            <Text style={Styles.tagText}>#idk</Text>
             </View>
             <View style={Styles.tags}>
-            <Text>#what</Text>
+            <Text style={Styles.tagText}>#what</Text>
             </View>
             <View style={Styles.tags}>
-            <Text>#to</Text>
+            <Text style={Styles.tagText}>#to</Text>
             </View>
             <View style={Styles.tags}>
-            <Text>#expect</Text>
+            <Text style={Styles.tagText}>#expect</Text>
             </View>
-            <TouchableOpacity onPress={this.signOut.bind(this)} style={Styles.jumbo}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>+</Text></TouchableOpacity>
+            <TouchableOpacity style={[Styles.jumbo, ProfileScreenStyle.addMore]}><Text style={Styles.buttonText}>+</Text></TouchableOpacity>
           </View>
         </View>
         <View id='generalSettings'>
           <Text style={[Styles.largeBody, ProfileScreenStyle.generalSettings]}> General Settings </Text>
-          <View style={{flexDirection: 'row'}}>
+          <View style={ProfileScreenStyle.settingLine}>
             <Text> Alert me when I'm near an event </Text>
             <Switch/>
           </View>
-          <View style={{flexDirection: 'row'}}>
+          <View style={ProfileScreenStyle.settingLine}>
             <Text> Other people can see my profile </Text>
             <Switch/>
           </View>
-          <View style={{flexDirection: 'row'}}>
+          <View style={ProfileScreenStyle.settingLine}>
             <Text> Allow location sharing </Text>
             <Switch/>
           </View>
         </View>
       </View>
-      <TouchableOpacity onPress={this.signOut.bind(this)} style={Styles.jumbo}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>Signout</Text></TouchableOpacity>
+      <View style={ProfileScreenStyle.signOutSection}>
+        <TouchableOpacity onPress={this.signOut.bind(this)} style={[Styles.jumbo, ProfileScreenStyle.signOut]}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>Signout</Text></TouchableOpacity>
+      </View>
       </View>
       </ScrollView>
     );
