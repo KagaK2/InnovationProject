@@ -19,7 +19,8 @@ export default class AuthLoadingScreen extends React.Component {
 
     // This will switch to the App screen or Auth screen and this loading
     // screen will be unmounted and thrown away.
-    this.props.navigation.navigate(userToken ? 'MainApp' : 'Auth');
+    // Change the MainApp to Auth for the facebook login
+    this.props.navigation.navigate(userToken ? 'MainApp' : 'MainApp');
   };
 
   // Render any loading content that you like here

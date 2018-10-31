@@ -7,6 +7,7 @@ import ProfileScreen from '../screens/ProfileScreen.js';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen.js';
 import CarouselCard from '../components/CarouselCard.js';
 import EventScreen from '../screens/EventScreen.js';
+import SearchScreen from '../screens/SearchScreen.js';
 
 
 const RootNav=  createStackNavigator(
@@ -17,6 +18,7 @@ const RootNav=  createStackNavigator(
 const TabNav = createBottomTabNavigator({
   Home: { screen: HomeScreen },
   Calendar: { screen: CalendarScreen },
+  Search: {screen: SearchScreen},
   Discussion: { screen: DiscussionScreen },
   Profile: { screen: ProfileScreen },
 });
