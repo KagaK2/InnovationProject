@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {View, ScrollView, Text, TextInput} from 'react-native';
 
 export default class SearchScreen extends React.Component {
   constructor(props){
@@ -8,7 +8,14 @@ export default class SearchScreen extends React.Component {
   static navigationOptions = { header: null };
   render(){
     return(
-      <Text>This is the search screen</Text>
+      <View>
+        <View>
+          <TextInput value=''/>
+        </View>
+        <ScrollView>
+          
+        </ScrollView>
+      </View>
     );
   }
 }
