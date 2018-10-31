@@ -78,3 +78,37 @@ export const LoginScreenStyle = StyleSheet.create({
     marginTop: 100,
   },
 });
+export const EventScreenStyle = StyleSheet.create({
+  topBanner: {
+    flex: 1,
+  },
+  backButton: {
+    marginTop: 16,
+    marginLeft: 16,
+  },
+  hashtagdate: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-end',
+  },
+  eventBody: {
+    marginLeft: 16,
+    marginTop: 20,
+  },
+  title: {
+    marginVertical: 16,
+  },
+  checkIn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent:'center',
+  },
+  checkInButton: {
+    backgroundColor: '#1F8FFF',
+  },
+  checkInButtonText: {
+    color: '#FFFFFF',
+  }
+
+});
