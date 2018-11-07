@@ -28,11 +28,11 @@ export default class CalendarScreen extends React.Component {
         </View>
         <View style={Styles.list}>
           <BigCard onPress={this._redirect} hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
-          <BigCard hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
-          <BigCard hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
-          <BigCard hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
-          <BigCard hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
-          <BigCard hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
+          <BigCard onPress={this._redirect} hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
+          <BigCard onPress={this._redirect} hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
+          <BigCard onPress={this._redirect} hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
+          <BigCard onPress={this._redirect} hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
+          <BigCard onPress={this._redirect} hashtag="theater" date="23 Oct 2018" eventName="Some Random Events" pic="https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg" going="Me and mah homies" />
           </View>
         </View>
       </ScrollView>

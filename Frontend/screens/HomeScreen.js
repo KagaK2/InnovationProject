@@ -34,10 +34,10 @@ export default class HomeScreen extends React.Component {
           <View>
             <Text style={Styles.subheader}> Nearby Activities</Text>
             <View style={Styles.list}>
-              <SmallCard source='https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/34342318_1685636718210353_5156702804055687168_n.jpg?_nc_cat=106&_nc_ht=scontent-arn2-1.xx&oh=15a5bd1511954bfe2b6a35f4479e40dc&oe=5C8090DF' date='Nov 1' eventName='TalentIT'/>
-              <SmallCard source='https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/A_Game_Of_Thrones_board_game_detail.jpg/275px-A_Game_Of_Thrones_board_game_detail.jpg' date='Nov 2' eventName='Boardgame night'/>
-              <SmallCard source='https://d2g8igdw686xgo.cloudfront.net/30716072_1529445382386421_r.jpeg' date='Nov 2' eventName='Music Concert'/>
-              <SmallCard source='https://philharmoniedeparis.fr/sites/default/files/styles/event_slide_full/public/file_dec_28_8_45_15_pm.jpeg' date='Nov 3' eventName='Late Night Jazz'/>
+              <SmallCard onPress = {this._direct} source='https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/34342318_1685636718210353_5156702804055687168_n.jpg?_nc_cat=106&_nc_ht=scontent-arn2-1.xx&oh=15a5bd1511954bfe2b6a35f4479e40dc&oe=5C8090DF' date='Nov 1' eventName='TalentIT'/>
+              <SmallCard onPress = {this._direct} source='https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/A_Game_Of_Thrones_board_game_detail.jpg/275px-A_Game_Of_Thrones_board_game_detail.jpg' date='Nov 2' eventName='Boardgame night'/>
+              <SmallCard onPress = {this._direct} source='https://d2g8igdw686xgo.cloudfront.net/30716072_1529445382386421_r.jpeg' date='Nov 2' eventName='Music Concert'/>
+              <SmallCard onPress = {this._direct} source='https://philharmoniedeparis.fr/sites/default/files/styles/event_slide_full/public/file_dec_28_8_45_15_pm.jpeg' date='Nov 3' eventName='Late Night Jazz'/>
             </View>
           </View>
           <View>
