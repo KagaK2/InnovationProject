@@ -1,5 +1,4 @@
 import React from 'react';
-import SideSwipe from 'react-native-sideswipe';
 import {View, Text, Image, ScrollView} from 'react-native';
 import CarouselCard from './CarouselCard';
 
