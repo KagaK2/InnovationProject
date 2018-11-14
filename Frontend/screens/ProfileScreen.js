@@ -2,9 +2,11 @@ import React from 'react';
 import {View, Text, Button, AsyncStorage, Image, ScrollView, Switch, TouchableOpacity} from 'react-native';
 import {ProfileScreenStyle} from '../styles/screenstyle.js';
 import {Styles} from '../styles/componentstyle.js';
+import { connect } from 'react-redux';
+import { logOut } from '../actions/index.js';
 
 
-export default class ProfileScreen extends React.Component {
+class ProfileScreen extends React.Component {
   constructor(props){
     super(props);
   }
@@ -14,8 +16,8 @@ export default class ProfileScreen extends React.Component {
       <ScrollView style={Styles.colorBody}>
       <View style={Styles.appBody}>
       <View id='userLogo' style={ProfileScreenStyle.userLogo}>
-        <Image source={{uri: 'https://i.imgur.com/uR8i9g3.png'}} style={ProfileScreenStyle.image}/>
-        <Text style={Styles.headline}> Khanh Phan </Text>
+        <Image source={{uri: this.props.picurl}} style={ProfileScreenStyle.image}/>
+        <Text style={Styles.headline}> {this.props.name}</Text>
         <Text style={Styles.secondBody}> This is the user title </Text>
       </View>
 
@@ -64,6 +66,21 @@ export default class ProfileScreen extends React.Component {
   }
   async signOut() {
     await AsyncStorage.clear();
+    await this.props.logOut();
     this.props.navigation.navigate('Auth');
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    name: state.reducer.name,
+    picurl: state.reducer.picurl
+  };
+};
+
+const mapDispatchToProps = {
+  logOut
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProfileScreen);

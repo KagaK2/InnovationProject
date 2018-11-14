@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Alert, AsyncStorage, Image, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import {Styles} from '../styles/componentstyle.js';
 import {LoginScreenStyle} from '../styles/screenstyle.js';
-export default class LogInScreen extends React.Component{
+import {saveNameAndPic} from '../actions/index.js';
+class LogInScreen extends React.Component{
   static navigationOptions = { header: null };
   render(){
     return(
@@ -25,9 +27,18 @@ export default class LogInScreen extends React.Component{
   if (type === 'success') {
     // Get the user's name using Facebook's Graph API
     const response = await fetch(
-      `https://graph.facebook.com/me?access_token=${token}`);
+      `https://graph.facebook.com/me?access_token=${token}&fields=id,name,picture.type(large)`);
     AsyncStorage.setItem('userToken', token);
+    const finalRes = await response.json();
+    this.props.saveNameAndPic(finalRes.name, finalRes.picture.data.url);
+    console.log(finalRes.name + " trying");
     this.props.navigation.navigate('Home');
     }
   }
 }
+
+const mapDispatchToProps = {
+  saveNameAndPic
+};
+
+export default connect(null, mapDispatchToProps)(LogInScreen);
