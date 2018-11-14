@@ -1,8 +1,9 @@
 
+// Basic functionalities for the API
 
 // Url and param
 var apiUrl = "https://linkedevents-api.test.hel.ninja/linkedevents-test/v1/";
-var apiKey = "934d7aed-9929-4b55-b70f-b60e4772316d"
+var apiKey = "123123sss-321312aaa-2323dfdf"
 
 
 // Get all events

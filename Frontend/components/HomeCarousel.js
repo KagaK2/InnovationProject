@@ -6,9 +6,16 @@ import * as HelAPI from '../scripts/HelAPI';
 
 async function setCarousel() {
   var datax = await HelAPI.getTodaysEvents();
-  console.log("Datax: " + datax);
-  console.log("Event name(fi): " + datax.data[1].name.fi);
-  console.log("Event image url: " + datax.data[1].images[0].url);
+  
+  // // Loop to Title and image url for the carousel cards
+
+  // for(i in datax.data) {
+  //   // EVENT NAME(FI):
+  //   datax.data[i].name.fi;
+  //   // EVENT IMAGE URL:
+  //   datax.data[i].images[0].url;
+  // }
+
   return datax;
 }
 
