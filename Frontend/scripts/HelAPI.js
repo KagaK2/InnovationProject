@@ -1,5 +1,4 @@
 
-
 // Url and param
 var apiUrl = "https://linkedevents-api.test.hel.ninja/linkedevents-test/v1/";
 var apiKey = "934d7aed-9929-4b55-b70f-b60e4772316d"
@@ -24,7 +23,7 @@ function getAllEvents() {
 function getEventsByDate(startDate, endDate) {
   //var d = new Date();
   //var n = "" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
-  return fetch(apiUrl + "event/?start=" + startDate + "&end=" + endDate), {
+  return fetch(apiUrl + "event/?start=" + startDate + "&end=" + endDate, {
     method: 'GET',
     headers: {
       "api_key": apiKey,
@@ -39,7 +38,7 @@ function getEventsByDate(startDate, endDate) {
 
 // Get todays EventScreen
 function getTodaysEvents() {
-  return fetch(apiUrl + "event/?start=today&end=today"), {
+  return fetch(apiUrl + "event/?start=today&end=today", {
       method: 'GET',
       headers: {
         "api_key": apiKey,
@@ -54,7 +53,7 @@ function getTodaysEvents() {
 
 // Get event by Text
 function getEventsByText(text) {
-  return fetch(apiUrl + "event/?text=" + text), {
+  return fetch(apiUrl + "event/?text=" + text, {
     method: 'GET',
     headers: {
       "api_key": apiKey,
@@ -69,7 +68,7 @@ function getEventsByText(text) {
 
 // Get events by location
 function getEventsByLocation(location) {
-  return fetch(apiUrl + "event/?location=" + location), {
+  return fetch(apiUrl + "event/?location=" + location, {
     method: 'GET',
     headers: {
       "api_key": apiKey,
@@ -84,7 +83,7 @@ function getEventsByLocation(location) {
 
 // Get events by division
 function getEventsByDivision(div) {
-  return fetch(apiUrl + "event/?location=" + div), {
+  return fetch(apiUrl + "event/?location=" + div, {
     method: 'GET',
     headers: {
       "api_key": apiKey,
