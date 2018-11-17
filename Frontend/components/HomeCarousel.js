@@ -1,43 +1,37 @@
 import React from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, FlatList} from 'react-native';
 import CarouselCard from './CarouselCard';
 import * as HelAPI from '../scripts/HelAPI';
 
 
-async function setCarousel() {
-  var datax = await HelAPI.getTodaysEvents();
-  
-  // // Loop to Title and image url for the carousel cards
-
-  // for(i in datax.data) {
-  //   // EVENT NAME(FI):
-  //   datax.data[i].name.fi;
-  //   // EVENT IMAGE URL:
-  //   datax.data[i].images[0].url;
-  // }
-
-  return datax;
-}
-
-var datax = setCarousel();
-
 export default class HomeCarousel extends React.Component {
   constructor(props){
     super(props);
+    this.state = {array: []};
+    this.setCarousel = this.setCarousel.bind(this);
   }
-  componentDidMount(){
+  async componentDidMount(){
+   let lmao = await this.setCarousel();
+   this.setState({array: lmao});
+   //this.setState = ({ array: lmao });
   }
+  async setCarousel() {
+    console.log('Im trying bruh');
+    let datax = await HelAPI.getTodaysEvents();
 
+    return datax.data;
+  }
+  _keyExtractor = (item, index) => item.id;
   render () {
     return (
       <View style={{height: 130}}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <CarouselCard onPress = {this.props.onPress} pic='https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg' title='LOL Tournament'/>
-            <CarouselCard onPress = {this.props.onPress} pic='https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg' title='Innovation Project'/>
-            <CarouselCard onPress = {this.props.onPress} pic='https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg' title='yada yada'/>
-            <CarouselCard onPress = {this.props.onPress} pic='https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg' title='etc'/>
-            <CarouselCard onPress = {this.props.onPress} pic='https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg' title='Lorem Ipsum'/>
-            <CarouselCard onPress = {this.props.onPress} pic='https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg' title='Donor si amet'/>
+            <FlatList
+              data = {this.state.array}
+              renderItem = { ({item}) => <CarouselCard key={item.id} onPress = {this.props.onPress} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} title={item.name.en ? item.name.en : item.name.fi}/>}
+              keyExtractor = {this._keyExtractor}
+              extraData={this.state.array}horizontal={true} showsHorizontalScrollIndicator={false}
+              />
         </ScrollView>
       </View>
     );

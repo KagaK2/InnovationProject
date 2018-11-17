@@ -10,7 +10,7 @@ import EventScreen from '../screens/EventScreen.js';
 import SearchScreen from '../screens/SearchScreen.js';
 
 
-const RootNav=  createStackNavigator(
+const RootNav = createStackNavigator(
    {
       Login: LogInScreen,
     },

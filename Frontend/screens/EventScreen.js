@@ -9,7 +9,6 @@ export default class EventScreen extends React.Component {
   };
   constructor(props) {
     super(props)
-    console.log(props);
     this._goBack = this._goBack.bind(this);
   }
   _goBack(){

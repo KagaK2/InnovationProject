@@ -31,7 +31,6 @@ class LogInScreen extends React.Component{
     AsyncStorage.setItem('userToken', token);
     const finalRes = await response.json();
     this.props.saveNameAndPic(finalRes.name, finalRes.picture.data.url);
-    console.log(finalRes.name + " trying");
     this.props.navigation.navigate('Home');
     }
   }
