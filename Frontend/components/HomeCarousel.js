@@ -11,12 +11,11 @@ export default class HomeCarousel extends React.Component {
     this.setCarousel = this.setCarousel.bind(this);
   }
   async componentDidMount(){
-   let lmao = await this.setCarousel();
-   this.setState({array: lmao});
+   let todayEvents = await this.setCarousel();
+   this.setState({array: todayEvents});
    //this.setState = ({ array: lmao });
   }
   async setCarousel() {
-    console.log('Im trying bruh');
     let datax = await HelAPI.getTodaysEvents();
 
     return datax.data;

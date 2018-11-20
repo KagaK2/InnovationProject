@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { StyleSheet, Text, View, Button, Alert, StatusBar, Platform } from 'react-native';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import {SwitchNav} from './router/appRouter';
 import {Styles} from './styles/componentstyle.js';
 import rootReducer from './reducer/';
-
-const store = createStore(rootReducer);
+import thunkMiddleware from 'redux-thunk';
+const store = createStore(rootReducer,applyMiddleware(thunkMiddleware));
 
 export default class App extends React.Component {
   render() {

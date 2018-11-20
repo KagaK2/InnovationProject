@@ -10,16 +10,22 @@ export default class EventScreen extends React.Component {
   constructor(props) {
     super(props)
     this._goBack = this._goBack.bind(this);
+    this.state = {event: {images: [], name: {}, description: {}, start_time: '', end_time: ''}};
   }
   _goBack(){
     this.props.navigation.navigate('TabNav');
   }
+  componentDidMount(){
+    let data = this.props.navigation.getParam('data', 'untitled');
+    this.setState({event: data});
+  }
   render(){
+
     return(
       <View>
       <ScrollView>
         <View>
-          <ImageBackground source={{uri: 'https://i.imgur.com/2HFkX7E.png'}} style={{height: 200, width: '100%'}}>
+          <ImageBackground source={{uri: this.state.event.images.length > 0 ? this.state.event.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'}} style={{height: 200, width: '100%'}}>
             <TouchableOpacity onPress={this._goBack} title="Back" style={EventScreenStyle.backButton}>
               <Image source={{uri: 'https://i.imgur.com/Usn22lm.png'}} style={{height: 36, width: 36}}/>
             </TouchableOpacity>
@@ -28,10 +34,10 @@ export default class EventScreen extends React.Component {
         <View style={EventScreenStyle.eventBody}>
           <View style={EventScreenStyle.hashtagdate}>
             <Text style={Styles.largeBody}>#concert</Text>
-            <Text style={Styles.secondBody}>•1 November 2018 at 11:00</Text>
+            <Text style={Styles.secondBody}>•{this.state.event.start_time}-{this.state.event.end_time}</Text>
           </View>
-          <Text style={[Styles.title,EventScreenStyle.title]}>Coming To You Live by DPR</Text>
-          <Text>Ut vitae porta eros. Aliquam condimentum lorem in elit aliquam ullamcorper. Pellentesque pellentesque nisl leo. Donec vel pulvinar felis, luctus consequat tortor. Quisque molestie lacus eros, id efficitur quam cursus ac. Donec aliquam felis purus, id condimentum ex finibus eget. Donec vehicula accumsan diam ac bibendum. Pellentesque consequat, ipsum eget interdum iaculis, mi velit eleifend odio, sed cursus nunc est eu arcu. Curabitur placerat enim a sodales consectetur. Cras nec ultrices ex. Nullam suscipit enim vitae tempor hendrerit. Etiam consequat pellentesque bibendum.
+          <Text style={[Styles.title,EventScreenStyle.title]}>{this.state.event.name.en ? this.state.event.name.en : this.state.event.name.fi}</Text>
+          <Text>{this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi}
             </Text>
           <View style={EventScreenStyle.checkIn}>
             <TouchableOpacity style={[Styles.jumbo, EventScreenStyle.checkInButton]}>
