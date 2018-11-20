@@ -26,10 +26,10 @@ export default class HomeCarousel extends React.Component {
       <View style={{height: 130}}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <FlatList
-              data = {this.state.array}
-              renderItem = { ({item}) => <CarouselCard key={item.id} onPress = {this.props.onPress} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} title={item.name.en ? item.name.en : item.name.fi}/>}
+              data = {this.props.data}
+              renderItem = { ({item}) => <CarouselCard key={item.id} onPress = {item.renderFunction} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} title={item.name.en ? item.name.en : item.name.fi}/>}
               keyExtractor = {this._keyExtractor}
-              extraData={this.state.array}horizontal={true} showsHorizontalScrollIndicator={false}
+              extraData={this.props.data}horizontal={true} showsHorizontalScrollIndicator={false}
               />
         </ScrollView>
       </View>

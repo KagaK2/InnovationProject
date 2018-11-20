@@ -17,6 +17,7 @@ export default class EventScreen extends React.Component {
   }
   componentDidMount(){
     let data = this.props.navigation.getParam('data', 'untitled');
+    console.log(this.props)
     this.setState({event: data});
   }
   render(){

@@ -1,21 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
 import HomeCarousel from '../components/HomeCarousel.js';
 import SmallCard from '../components/SmallCard.js';
 import ThumbnailCard from '../components/ThumbnailCard.js';
 import {Styles} from '../styles/componentstyle.js';
 import {HomeScreenStyle} from '../styles/screenstyle.js';
+import { fetchTodayEvent } from '../actions/index.js';
 
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {array : []}
+  }
+  async componentDidMount(){
+    await this.props.fetchTodayEvent();
+    const today = this.props.day.slice();
+    today.map(item => Object.assign(item,{renderFunction: () => this._direct(item)}));
+    this.setState({array : today});
+  }
+
   static navigationOptions = {
     header: null,
   }
-  _direct = () => {
+  _direct = (item) => {
     this.props.navigation.navigate(
       {
         routeName : 'EventScreen',
-        param: {},
+        params: {data: item},
       }
     );
   }
@@ -29,7 +42,7 @@ export default class HomeScreen extends React.Component {
           </View>
           <View>
             <Text style={Styles.subheader}> Right here right now </Text>
-            <HomeCarousel onPress = {this._direct} />
+            <HomeCarousel data = {this.state.array} />
           </View>
           <View>
             <Text style={Styles.subheader}> Nearby Activities</Text>
@@ -59,3 +72,14 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    day: state.reducer.day,
+  };
+}
+
+const mapDispatchToProps = {
+  fetchTodayEvent
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

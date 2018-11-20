@@ -15,7 +15,6 @@ class CalendarScreen extends React.Component {
 
   componentDidMount () {
      this.props.fetchWeekEvent();
-
   }
 
   _redirect = (item) => {
