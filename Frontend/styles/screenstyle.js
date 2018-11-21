@@ -8,15 +8,28 @@ export const HomeScreenStyle = StyleSheet.create({
     marginTop: 24,
     backgroundColor: '#FFA06E',
   },
+
 });
 export const CalendarScreenStyle = StyleSheet.create({
   appBody: {
     marginHorizontal: 8,
     paddingTop: 50,
+    flex: 1,
+    backgroundColor: '#BBBBBB',
   },
   list: {
     alignItems: 'center',
+    marginRight: 16,
+    marginTop: 5,
+    flex: 1,
   },
+  boxWithShadow: {
+    shadowColor: '#CCCCCC',
+    shadowOffset: {width: 0, height: 0},
+    shadowRadius: 5,
+    shadowOpacity: 10,
+
+}
 });
 export const ProfileScreenStyle = StyleSheet.create({
   image: {
