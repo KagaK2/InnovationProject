@@ -67,6 +67,31 @@ export const ProfileScreenStyle = StyleSheet.create({
     marginRight: 16,
     marginBottom: 5,
   },
+  numberOfEvents: {
+    backgroundColor: '#FFA06E',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 18,
+    borderRadius: 5,
+    borderWidth: 0.05,
+    marginRight: 16,
+    marginBottom: 16,
+  },
+  listOfEvents: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  eventDetails: {
+    flex: 1,
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  eventAchievementTime: {
+    fontSize: 12,
+  },
+  eventAchievement: {
+    fontSize: 14,
+  },
   signOutSection: {
     alignItems: 'flex-start',
     flex: 1,

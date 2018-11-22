@@ -80,6 +80,28 @@ export const Styles = StyleSheet.create({
   profileIconContainer: {
     paddingHorizontal: 10,
   },
+  hurray: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  numberOfEvents: {
+    color: "#000000",
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 15,
+  },
+  eventIcon: {
+    borderWidth:1,
+    borderColor:'#000000',
+    alignItems:'center',
+    justifyContent:'center',
+    width:50,
+    height:50,
+    backgroundColor:'#fff',
+    borderRadius: 5,
+    borderWidth: 0.01,
+  },
 });
 export const SmallCardStyle = StyleSheet.create({
   card: {
