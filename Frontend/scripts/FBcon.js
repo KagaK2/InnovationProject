@@ -3,12 +3,12 @@ import 'firebase/firestore';
 
 // Initialize Firebase
 var config = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: ""
+  apiKey: "AIzaSyAMFtCMKracMLES-ddu4P3h4RamNN8lCoA",
+  authDomain: "gosinki-ee.firebaseapp.com",
+  databaseURL: "https://gosinki-ee.firebaseio.com",
+  projectId: "gosinki-ee",
+  storageBucket: "gosinki-ee.appspot.com",
+  messagingSenderId: "718950483191"
 };
 
 firebase.initializeApp(config);
@@ -57,6 +57,17 @@ export async function returnAllUsers(){
   });
 }
 
+// Posts every event to console
+export async function returnAllEvents(){
+  eventsRef.get().then(snapshot => {
+    snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+    });
+  })
+  .catch(err => {
+    console.log("Error getting events");
+  });
+}
 
 // USE AFTER CLICKING 'JOIN EVENT'
 // Checks if the event is 'marked', either creates the event info or adds the
@@ -91,3 +102,66 @@ export async function addUserToEvent(blast, event) {
 export async function removeUserFromEvent(blast, event) {
     eventsRef.doc(event).update({attendees: firebase.firestore.FieldValue.arrayRemove(blast)});
 }
+
+
+// _____________________________________________________________________________
+// IN ORDER TO TEST THESE FUNCTIONS, CHANGE user IN WHERE FUNCTION TO WANTED USER ID
+//    |
+//   \/
+export async function getUserData() {
+    usersRef.where("id", "==", user).get().then((snapshot) => {
+      snapshot.forEach(doc => {
+        console.log("All user data: " + doc.data());
+        return doc.data();
+      })
+    });
+}
+
+export async function getUserAttending() {
+  usersRef.where("id", "==", user).get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      console.log("User attending array: " + doc.data().attending);
+      return doc.data().attending
+    })
+  });
+}
+
+export async function getUserAttended() {
+  usersRef.where("id", "==", user).get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      console.log("User attended array " + doc.data().attended);
+      return doc.data().attended;
+    })
+  });
+}
+
+export async function getUserAttInt() {
+  usersRef.where("id", "==", user).get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      console.log("Number of events user has attende to: " + doc.data().attInt);
+      return doc.data().attInt;
+    })
+  });
+}
+
+export async function getUserName() {
+  usersRef.where("id", "==", user).get().then((snapshot) => {
+    snapshot.forEach(doc => {
+      console.log("Username: " + doc.data().name);
+      return doc.data().name;
+    })
+  });
+}
+
+export async function getUserId() {
+    if(user === null) {
+      console.log("USER NOT CREATED/NOT LOGGED IN");
+    } else {
+      console.log("User id: " + user);
+      return user;
+    }
+}
+
+//   /\
+//   |
+// _____________________________________________________________________________

@@ -7,7 +7,7 @@ import ThumbnailCard from '../components/ThumbnailCard.js';
 import {Styles} from '../styles/componentstyle.js';
 import {HomeScreenStyle} from '../styles/screenstyle.js';
 import { fetchTodayEvent } from '../actions/index.js';
-
+import * as FBcon from '../scripts/FBcon';
 
 class HomeScreen extends React.Component {
   constructor(props){
