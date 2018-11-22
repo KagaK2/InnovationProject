@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
+import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import HomeCarousel from '../components/HomeCarousel.js';
 import SmallCard from '../components/SmallCard.js';
 import ThumbnailCard from '../components/ThumbnailCard.js';
 import {Styles} from '../styles/componentstyle.js';
 import {HomeScreenStyle} from '../styles/screenstyle.js';
 import { fetchTodayEvent } from '../actions/index.js';
-import * as FBcon from '../scripts/FBcon';
+
 
 class HomeScreen extends React.Component {
   constructor(props){
@@ -36,9 +36,17 @@ class HomeScreen extends React.Component {
     return(
       <ScrollView style={Styles.colorBody}>
         <View style={Styles.appBody}>
-          <View>
-            <Text style={Styles.headline}>Home</Text>
-            <Text style={Styles.largeBody}>Here is your discovery queue today.</Text>
+          <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+            <View>
+              <Text style={Styles.headline}>Home</Text>
+              <Text style={Styles.largeBody}>Here is your discovery queue today.</Text>
+            </View>
+            <TouchableOpacity style={Styles.profileIconContainer}>
+              <Image
+                style={Styles.profileIcon}
+                source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
+              />
+            </TouchableOpacity>
           </View>
           <View>
             <Text style={Styles.subheader}> Right here right now </Text>

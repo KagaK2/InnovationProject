@@ -34,6 +34,7 @@ export const Styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   appBody: {
+    flex: 1,
     marginLeft: 16,
     paddingTop: 50,
   },
@@ -65,6 +66,19 @@ export const Styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     justifyContent: 'center',
+  },
+  profileIcon: {
+    borderWidth:1,
+    borderColor:'#000000',
+    alignItems:'center',
+    justifyContent:'center',
+    width:40,
+    height:40,
+    backgroundColor:'#fff',
+    borderRadius:20,
+  },
+  profileIconContainer: {
+    paddingHorizontal: 10,
   },
 });
 export const SmallCardStyle = StyleSheet.create({
@@ -120,12 +134,16 @@ export const ThumbnailCardStyle = StyleSheet.create({
 export const BigCardStyle = StyleSheet.create({
   card: {
     paddingVertical: 16,
-    marginBottom: 5,
-    width: '90%',
+    marginVertical: 7,
+    //width: '90%',
     borderWidth: 0.01,
+    backgroundColor: '#FFFFFF',
+    marginHorizontal: 10,
+    borderRadius: 5,
+
   },
   image: {
-    width: '100%',
+    width: null,
     height: 160,
     marginVertical: 16,
     //resizeMode: 'stretch',
