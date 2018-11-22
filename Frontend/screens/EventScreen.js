@@ -1,9 +1,11 @@
 import React from 'react';
 import {View, Text, Button, TouchableOpacity, ImageBackground, Image, ScrollView} from 'react-native';
+import {connect} from 'react-redux';
 import {Styles} from '../styles/componentstyle.js';
 import {EventScreenStyle} from '../styles/screenstyle.js';
+import * as FBcon from '../scripts/FBcon.js';
 
-export default class EventScreen extends React.Component {
+class EventScreen extends React.Component {
   static navigationOptions = {
     title: 'Your event',
   };
@@ -17,7 +19,6 @@ export default class EventScreen extends React.Component {
   }
   componentDidMount(){
     let data = this.props.navigation.getParam('data', 'untitled');
-    console.log(this.props)
     this.setState({event: data});
   }
   render(){
@@ -41,7 +42,10 @@ export default class EventScreen extends React.Component {
           <Text>{this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi}
             </Text>
           <View style={EventScreenStyle.checkIn}>
-            <TouchableOpacity style={[Styles.jumbo, EventScreenStyle.checkInButton]}>
+            <TouchableOpacity
+              onPress={() => FBcon.checkEvent(this.props.id, this.state.event.id, this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi)}
+              style={[Styles.jumbo, EventScreenStyle.checkInButton]}
+              >
               <Text style={[Styles.buttonText, EventScreenStyle.checkInButtonText]}> CHECK IN </Text>
             </TouchableOpacity>
           </View>
@@ -51,3 +55,11 @@ export default class EventScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    id : state.reducer.id,
+  };
+};
+
+export default connect(mapStateToProps)(EventScreen);

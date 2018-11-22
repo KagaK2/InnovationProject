@@ -3,11 +3,12 @@ export const SAVE_NAME_AND_PIC = 'SAVE_NAME_AND_PIC';
 export const LOG_OUT = 'LOG_OUT';
 export const FETCH_WEEK = 'FETCH_WEEK';
 export const FETCH_DAY = 'FETCH_DAY';
-export function saveNameAndPic (name, picurl){
+export function saveNameAndPic (name, picurl, id){
   return {
     type: SAVE_NAME_AND_PIC,
     name: name,
     picurl: picurl,
+    id: id,
   }
 };
 export function logOut() {

@@ -3,7 +3,7 @@ import _ from 'lodash';
 export default function reducer(state = {}, action){
   switch(action.type){
     case SAVE_NAME_AND_PIC:
-      return {name: action.name, picurl: action.picurl, ...state};
+      return {name: action.name, picurl: action.picurl, id: action.id, ...state};
     case LOG_OUT:
       delete state.name;
       delete state.picurl;

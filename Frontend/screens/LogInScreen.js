@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {Styles} from '../styles/componentstyle.js';
 import {LoginScreenStyle} from '../styles/screenstyle.js';
 import {saveNameAndPic} from '../actions/index.js';
+import * as FBcon from '../scripts/FBcon.js';
 class LogInScreen extends React.Component{
   static navigationOptions = { header: null };
   render(){
@@ -30,7 +31,8 @@ class LogInScreen extends React.Component{
       `https://graph.facebook.com/me?access_token=${token}&fields=id,name,picture.type(large)`);
     AsyncStorage.setItem('userToken', token);
     const finalRes = await response.json();
-    this.props.saveNameAndPic(finalRes.name, finalRes.picture.data.url);
+    await FBcon.checkUser(finalRes.id, finalRes.name);
+    this.props.saveNameAndPic(finalRes.name, finalRes.picture.data.url, finalRes.id);
     this.props.navigation.navigate('Home');
     }
   }

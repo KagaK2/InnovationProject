@@ -48,7 +48,6 @@ export async function checkUser(userId, name) {
         if(docSnapshot.exists) {
           usersRef.onSnapshot((doc) => {
             console.log("User found");
-            user = userId;
           });
         } else {
           console.log("User not found");
@@ -57,7 +56,6 @@ export async function checkUser(userId, name) {
             name: name,
           }
           usersRef.doc(userId).set(data);
-          user = userId;
         }
       })
 }
@@ -89,7 +87,7 @@ export async function returnAllEvents(){
 // USE AFTER CLICKING 'JOIN EVENT'
 // Checks if the event is 'marked', either creates the event info or adds the
 // user to it.
-export async function checkEvent(eventId, eventName, eventDate, eventDesc) {
+export async function checkEvent(user, eventId, eventName, eventDate, eventDesc) {
     eventsRef.doc(eventId).get()
       .then((docSnapshot) => {
         if(docSnapshot.exists) {
@@ -144,7 +142,7 @@ export async function getUserAttending() {
 }
 
 export async function getUserAttended() {
-  usersRef.where("id", "==", user).get().then((snapshot) => {
+  usersRef.where("id", "==", "2201625983446208").get().then((snapshot) => {
     snapshot.forEach(doc => {
       console.log("User attended array " + doc.data().attended);
       return doc.data().attended;

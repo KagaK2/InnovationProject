@@ -72,7 +72,6 @@ class ProfileScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     name: state.reducer.name,
     picurl: state.reducer.picurl
