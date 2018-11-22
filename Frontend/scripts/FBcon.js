@@ -21,6 +21,23 @@ const eventsRef = db.collection('events');
 
 var user = "";
 
+// Create users manually
+export async function createUser(id, name, attending, attended, attInt) {
+  var data = {
+    id: id,
+    name: name,
+    attending: attending,
+    attended: attended,
+    attInt: attInt
+  };
+
+  usersRef.doc(id).set(data);
+}
+
+export async function removeUser(id) {
+  usersRef.doc(id).delete();
+}
+
 
 // USE AFTER LOGIN
 // Passes the information to the database and checks if the user already
