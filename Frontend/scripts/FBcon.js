@@ -21,6 +21,7 @@ const eventsRef = db.collection('events');
 
 var user = "";
 
+
 // USE AFTER LOGIN
 // Passes the information to the database and checks if the user already
 // exists.
@@ -42,6 +43,18 @@ export async function checkUser(userId, name) {
           user = userId;
         }
       })
+}
+
+// Posts every user to console
+export async function returnAllUsers(){
+  usersRef.get().then(snapshot => {
+    snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+    });
+  })
+  .catch(err => {
+    console.log("Error getting users");
+  });
 }
 
 
