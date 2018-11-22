@@ -44,7 +44,7 @@ class HomeScreen extends React.Component {
             <TouchableOpacity style={Styles.profileIconContainer}>
               <Image
                 style={Styles.profileIcon}
-                source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
+                source={{uri: this.props.picurl}}
               />
             </TouchableOpacity>
           </View>
@@ -82,6 +82,7 @@ class HomeScreen extends React.Component {
 }
 const mapStateToProps = state => {
   return {
+    picurl: state.reducer.picurl,
     day: state.reducer.day,
   };
 }

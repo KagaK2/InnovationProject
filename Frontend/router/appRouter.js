@@ -8,6 +8,7 @@ import AuthLoadingScreen from '../screens/AuthLoadingScreen.js';
 import CarouselCard from '../components/CarouselCard.js';
 import EventScreen from '../screens/EventScreen.js';
 import SearchScreen from '../screens/SearchScreen.js';
+import OtherUserScreen from '../screens/OtherUserScreen.js';
 
 
 const RootNav = createStackNavigator(
@@ -26,6 +27,7 @@ const CarouselNav = createStackNavigator(
   {
     TabNav: TabNav,
     EventScreen: {screen: EventScreen},
+    OtherUserScreen : {screen: OtherUserScreen},
   },
   {
       headerMode: 'none'
