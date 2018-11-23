@@ -180,7 +180,7 @@ export async function getUserAttending() {
 }
 
 export async function getUserAttended() {
-  usersRef.where("id", "==", "2201625983446208").get().then((snapshot) => {
+  usersRef.where("id", "==", user).get().then((snapshot) => {
     snapshot.forEach(doc => {
       console.log("User attended array " + doc.data().attended);
       return doc.data().attended;
@@ -240,7 +240,7 @@ export async function addAttended(event) {
 }
 
 export async function updateAttInt(x){
-    var userIdRef = usersRef.doc('123123');
+    var userIdRef = usersRef.doc(user);
     db.runTransaction(t => {
       return t.get(usersIdRef)
         .then(doc => {
