@@ -31,7 +31,7 @@ class LogInScreen extends React.Component{
       `https://graph.facebook.com/me?access_token=${token}&fields=id,name,picture.type(large)`);
     AsyncStorage.setItem('userToken', token);
     const finalRes = await response.json();
-    await FBcon.checkUser(finalRes.id, finalRes.name);
+    await FBcon.checkUser(finalRes.id, finalRes.name, finalRes.picture.data.url);
     this.props.saveNameAndPic(finalRes.name, finalRes.picture.data.url, finalRes.id);
     this.props.navigation.navigate('Home');
     }

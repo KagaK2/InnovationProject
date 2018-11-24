@@ -3,6 +3,7 @@ import {View, Text, Button, TouchableOpacity, ImageBackground, Image, ScrollView
 import {connect} from 'react-redux';
 import {Styles} from '../styles/componentstyle.js';
 import {EventScreenStyle} from '../styles/screenstyle.js';
+import UserIcon from '../components/UserIcon.js';
 import * as FBcon from '../scripts/FBcon.js';
 
 class EventScreen extends React.Component {
@@ -12,6 +13,8 @@ class EventScreen extends React.Component {
   constructor(props) {
     super(props)
     this._goBack = this._goBack.bind(this);
+    this.eventCheck = this.eventCheck.bind(this);
+    this.attendeeFetch = this.attendeeFetch.bind(this);
     this.state = {event: {images: [], name: {}, description: {}, start_time: '', end_time: ''}};
   }
   _goBack(){
@@ -19,10 +22,35 @@ class EventScreen extends React.Component {
   }
   componentDidMount(){
     let data = this.props.navigation.getParam('data', 'untitled');
-    this.setState({event: data});
+    this.attendeeFetch(data);
+    this.setState(
+      {event: data}
+    );
   }
-  render(){
+  async eventCheck(){
+    await FBcon.checkEvent(this.props.id, this.state.event.id, this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi);
+    await FBcon.addAttending(this.props.id, this.state.event.id);
+  }
+  async attendeeFetch(data){
+    try {
+     let attendees = await FBcon.getEventAttendees(data.id)
+    let attendeesArray = [];
+    attendees.map(attendee => {
+      let info = FBcon.getUserData(attendee);
+      attendeesArray.push(info);
+    });
+    console.log(attendeesArray);
+  }
+  catch(err){
+    console.log(err);
+  }
+  }
 
+  attendeeRender(arrayData){
+
+  }
+
+  render(){
     return(
       <View>
       <ScrollView>
@@ -41,9 +69,12 @@ class EventScreen extends React.Component {
           <Text style={[Styles.title,EventScreenStyle.title]}>{this.state.event.name.en ? this.state.event.name.en : this.state.event.name.fi}</Text>
           <Text>{this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi}
             </Text>
+          <Text> People who will attend this event </Text>
+          <UserIcon/>
+          <UserIcon/>
           <View style={EventScreenStyle.checkIn}>
             <TouchableOpacity
-              onPress={() => FBcon.checkEvent(this.props.id, this.state.event.id, this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi)}
+              onPress={this.eventCheck}
               style={[Styles.jumbo, EventScreenStyle.checkInButton]}
               >
               <Text style={[Styles.buttonText, EventScreenStyle.checkInButtonText]}> CHECK IN </Text>

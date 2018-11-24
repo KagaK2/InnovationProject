@@ -25,8 +25,9 @@ export function exportWeekEvent(data){
 export function fetchWeekEvent(){
   return async (dispatch) => {
     let day = new Date();
-    let today = "" + day.getFullYear() + "-" + (day.getMonth()+1) + "-" + day.getDate();
-    let endDate = "" + day.getFullYear() + "-" + (day.getMonth()+1) + "-" + (day.getDate()+7);
+    let day1 = new Date(day.getFullYear(),day.getMonth(),day.getDate()+7);
+    let today = day.getFullYear() + "-" + (day.getMonth()+1) + "-" + day.getDate();
+    let endDate = day1.getFullYear() + "-" + (day1.getMonth()+1) + "-" + day1.getDate();
     let data = await HelAPI.getEventsByDate(today,endDate);
     dispatch(exportWeekEvent(data.data));
   }

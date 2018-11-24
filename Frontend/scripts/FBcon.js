@@ -20,7 +20,6 @@ const usersRef = db.collection('users');
 const eventsRef = db.collection('events');
 
 
-var user = "";
 
 // Create users manually
 // id : string
@@ -145,7 +144,7 @@ export async function checkEvent(user, eventId, eventName, eventDate, eventDesc)
           eventsRef.doc(eventId).set(data);
           addUserToEvent(user, eventId);
         }
-      })
+      }).catch(err => console.log(err));
 }
 
 export async function addOwnUserToEvent(blast, event) {
@@ -161,52 +160,52 @@ export async function removeOwnUserFromEvent(blast, event) {
 // IN ORDER TO TEST THESE FUNCTIONS, CHANGE user IN WHERE FUNCTION TO WANTED USER ID
 //    |
 //   \/
-export async function getUserData() {
-    usersRef.where("id", "==", user).get().then((snapshot) => {
-      snapshot.forEach(doc => {
-        console.log("All user data: " + doc.data());
-        return doc.data();
-      })
-    });
+export async function getUserData(user) {
+  let snapshot = await usersRef.where("id", "==", user).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data())
+   })
+   return newArray;
 }
 
-export async function getUserAttending() {
-  usersRef.where("id", "==", user).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("User attending array: " + doc.data().attending);
-      return doc.data().attending;
-    })
-  });
+export async function getUserAttending(user) {
+  let snapshot = await usersRef.where("id", "==", user).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().attending)
+   })
+   return newArray;
 }
 
-export async function getUserAttended() {
-  usersRef.where("id", "==", user).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("User attended array " + doc.data().attended);
-      return doc.data().attended;
-    })
-  });
+export async function getUserAttended(user) {
+  let snapshot = await usersRef.where("id", "==", user).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().attended)
+   })
+   return newArray;
 }
 
-export async function getUserAttInt() {
-  usersRef.where("id", "==", user).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("Number of events user has attended to: " + doc.data().attInt);
-      return doc.data().attInt;
-    })
-  });
+export async function getUserAttInt(user) {
+  let snapshot = await usersRef.where("id", "==", user).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().attInt)
+   })
+   return newArray;
 }
 
-export async function getUserName() {
-  usersRef.where("id", "==", user).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("Username: " + doc.data().name);
-      return doc.data().name;
-    })
-  });
+export async function getUserName(user) {
+  let snapshot = await usersRef.where("id", "==", user).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().name)
+   })
+   return newArray;
 }
 
-export async function getUserId() {
+export async function getUserId(user) {
     if(user === null) {
       console.log("USER NOT CREATED/NOT LOGGED IN");
     } else {
@@ -215,31 +214,31 @@ export async function getUserId() {
     }
 }
 
-export async function updateUserId(id) {
+export async function updateUserId(user, id) {
   usersRef.doc(user).update({id: id});
 }
 
-export async function updateUserName(name) {
+export async function updateUserName(user, name) {
   usersRef.doc(user).update({name: name});
 }
 
-export async function updateUserPicture(pic) {
+export async function updateUserPicture(user, pic) {
   usersRef.doc(user).update({pic: pic});
 }
 
-export async function addAttending(event) {
+export async function addAttending(user, event) {
   usersRef.doc(user).update({attending: firebase.firestore.FieldValue.arrayUnion(event)});
 }
 
-export async function removeAttending(event) {
+export async function removeAttending(user, event) {
   usersRef.doc(user).update({attending: firebase.firestore.FieldValue.arrayRemove(event)});
 }
 
-export async function addAttended(event) {
+export async function addAttended(user, event) {
   usersRef.doc(user).update({attended: firebase.firestore.FieldValue.arrayUnion(event)});
 }
 
-export async function updateAttInt(x){
+export async function updateAttInt(user, x){
     var userIdRef = usersRef.doc(user);
     db.runTransaction(t => {
       return t.get(usersIdRef)
@@ -266,11 +265,11 @@ export async function updateAttInt(x){
 //   \/
 
 
-export async function addUserToEvent(event) {
+export async function addUserToEvent(user, event) {
     eventsRef.doc(event).update({attendees: firebase.firestore.FieldValue.arrayUnion(user)});
 }
 
-export async function removeUserFromEvent(event) {
+export async function removeUserFromEvent(user, event) {
     eventsRef.doc(event).update({attendees: firebase.firestore.FieldValue.arrayRemove(user)});
 }
 
@@ -284,21 +283,23 @@ export async function getEventData(event) {
 }
 
 export async function getEventAttendees(event) {
-  eventsRef.where("id", "==", event).get().then((snapshot) => {
-    snapshot.forEach(doc => {
+   let snapshot = await eventsRef.where("id", "==", event).get()
+   let newArray = []
+   snapshot.forEach(doc => {
       console.log("Event attendees array: " + doc.data().attendees);
-      return doc.data().attendees;
+      newArray.push(doc.data().attendees)
     })
-  });
+    return newArray;
 }
 
 export async function getEventDate(event) {
-  eventsRef.where("id", "==", event).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("Event date: " + doc.data().date);
-      return doc.data().date;
-    })
-  });
+  let snapshot = await eventsRef.where("id", "==", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+     console.log("Event date array: " + doc.data().date);
+     newArray.push(doc.data().date)
+   })
+   return newArray;
 }
 
 export async function getEventDescription(event) {
@@ -311,30 +312,33 @@ export async function getEventDescription(event) {
 }
 
 export async function getEventExpired(event) {
-  eventsRef.where("id", "==", event).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("Event attendees array: " + doc.data().expired);
-      return doc.data().expired;
-    })
-  });
+  let snapshot = await eventsRef.where("id", "==", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+     console.log("Event expired array: " + doc.data().expired);
+     newArray.push(doc.data().expired)
+   })
+   return newArray;
 }
 
 export async function getEventId(event) {
-  eventsRef.where("id", "==", event).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("Event attendees array: " + doc.data().id);
-      return doc.data().id;
-    })
-  });
+  let snapshot = await eventsRef.where("id", "==", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+     console.log("Event id array: " + doc.data().id);
+     newArray.push(doc.data().id)
+   })
+   return newArray;
 }
 
 export async function getEventName(event) {
-  eventsRef.where("id", "==", event).get().then((snapshot) => {
-    snapshot.forEach(doc => {
-      console.log("Event attendees array: " + doc.data().name);
-      return doc.data().name;
-    })
-  });
+  let snapshot = await eventsRef.where("id", "==", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+     console.log("Event attendees array: " + doc.data().name);
+     newArray.push(doc.data().name)
+   })
+   return newArray;
 }
 
 export async function updateEventId(event, id) {
