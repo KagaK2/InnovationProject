@@ -185,3 +185,14 @@ export const BigCardStyle = StyleSheet.create({
     paddingLeft: 16,
   }
 });
+
+export const SearchBarStyle = StyleSheet.create({
+  searchBar: {
+    backgroundColor: '#e6e6e6',
+    flexDirection: 'row',
+    borderRadius: 7,
+    padding: 8,
+    marginTop: 10,
+    marginRight: 16,
+  }
+});
