@@ -12,7 +12,7 @@ export default class SearchBar extends React.Component {
           style ={{height: 20, width: 20}}
         />
         <TextInput
-        style = {{fontSize: 16}}
+        style = {{fontSize: 16, marginLeft: 8}}
         inlineImageLeft = 'search_icon'
         placeholder='What are you looking for?'
         />
