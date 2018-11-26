@@ -15,7 +15,7 @@ class EventScreen extends React.Component {
     this._goBack = this._goBack.bind(this);
     this.eventCheck = this.eventCheck.bind(this);
     this.attendeeFetch = this.attendeeFetch.bind(this);
-    this.state = {event: {images: [], name: {}, description: {}, start_time: '', end_time: ''}};
+    this.state = {event: {images: [], name: {}, description: {}, start_time: '', end_time: ''}, attendees: []};
   }
   _goBack(){
     this.props.navigation.navigate('TabNav');
@@ -33,13 +33,15 @@ class EventScreen extends React.Component {
   }
   async attendeeFetch(data){
     try {
-     let attendees = await FBcon.getEventAttendees(data.id)
-    let attendeesArray = [];
-    attendees.map(attendee => {
-      let info = FBcon.getUserData(attendee);
-      attendeesArray.push(info);
-    });
+     let attendees = await FBcon.getEventAttendees(data.id);
+     let attendeesArray = await Promise.all( attendees[0].map(async (attendee) => {
+      let info = await FBcon.getUserData(attendee);
+      console.log({key: info[0].id,...info[0]});
+      return {key: info[0].id,...info[0]};
+    }));
+
     console.log(attendeesArray);
+    this.setState({attendees: attendeesArray});
   }
   catch(err){
     console.log(err);
@@ -47,7 +49,11 @@ class EventScreen extends React.Component {
   }
 
   attendeeRender(arrayData){
-
+    return(
+      <View key={arrayData.id}>
+        <UserIcon image={arrayData.pic}/>
+      </View>
+    );
   }
 
   render(){
@@ -70,8 +76,9 @@ class EventScreen extends React.Component {
           <Text>{this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi}
             </Text>
           <Text> People who will attend this event </Text>
-          <UserIcon/>
-          <UserIcon/>
+          <View>
+            {this.state.attendees.map(this.attendeeRender)}
+          </View>
           <View style={EventScreenStyle.checkIn}>
             <TouchableOpacity
               onPress={this.eventCheck}
