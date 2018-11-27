@@ -139,6 +139,7 @@ export async function checkEvent(user, eventId, eventName, eventDate, eventDesc)
             name: eventName,
             date: eventDate,
             desc: eventDesc,
+            attendees: [],
             expired: false,
           }
           eventsRef.doc(eventId).set(data);

@@ -34,14 +34,13 @@ class EventScreen extends React.Component {
   async attendeeFetch(data){
     try {
      let attendees = await FBcon.getEventAttendees(data.id);
+     if (attendees.length > 0){
      let attendeesArray = await Promise.all( attendees[0].map(async (attendee) => {
       let info = await FBcon.getUserData(attendee);
-      console.log({key: info[0].id,...info[0]});
       return {key: info[0].id,...info[0]};
     }));
-
-    console.log(attendeesArray);
     this.setState({attendees: attendeesArray});
+  }
   }
   catch(err){
     console.log(err);
