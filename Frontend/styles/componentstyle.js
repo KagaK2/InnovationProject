@@ -124,12 +124,12 @@ export const SmallCardStyle = StyleSheet.create({
 });
 export const CarouselCardStyle = StyleSheet.create({
   card: {
-    height: 130,
+    height: 140,
     width: '90%',
   },
   image: {
-    width: 250,
-    height: 130,
+    width: 230,
+    height: 140,
     margin: 8,
     alignItems: 'center',
     justifyContent: 'center',

@@ -28,7 +28,7 @@ class EventScreen extends React.Component {
     );
   }
   async eventCheck(){
-    await FBcon.checkEvent(this.props.id, this.state.event.id, this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi);
+    await FBcon.checkEvent(this.props.id, this.state.event.id,this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi);
     await FBcon.addAttending(this.props.id, this.state.event.id);
   }
   async attendeeFetch(data){

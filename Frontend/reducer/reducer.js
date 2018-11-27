@@ -1,4 +1,4 @@
-import {SAVE_NAME_AND_PIC, LOG_OUT, FETCH_WEEK, FETCH_DAY} from '../actions/index.js';
+import {SAVE_NAME_AND_PIC, LOG_OUT, FETCH_WEEK, FETCH_DAY, FETCH_ATTENDING} from '../actions/index.js';
 import _ from 'lodash';
 export default function reducer(state = {}, action){
   switch(action.type){
@@ -12,6 +12,8 @@ export default function reducer(state = {}, action){
       return {week: action.payload, ...state};
     case FETCH_DAY:
       return {day: action.payload, ...state};
+    case FETCH_ATTENDING:
+      return {attending: action.payload, ...state};
     default:
       return state;
   }

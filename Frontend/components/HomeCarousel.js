@@ -23,7 +23,7 @@ export default class HomeCarousel extends React.Component {
   _keyExtractor = (item, index) => item.id;
   render () {
     return (
-      <View style={{height: 130}}>
+      <View style={{height: 140}}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <FlatList
               data = {this.props.data}

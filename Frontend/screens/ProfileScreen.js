@@ -3,12 +3,17 @@ import {View, Text, Button, AsyncStorage, Image, ScrollView, Switch, TouchableOp
 import {ProfileScreenStyle} from '../styles/screenstyle.js';
 import {Styles} from '../styles/componentstyle.js';
 import { connect } from 'react-redux';
-import { logOut } from '../actions/index.js';
+import { logOut, fetchAttending } from '../actions/index.js';
+
 
 
 class ProfileScreen extends React.Component {
   constructor(props){
     super(props);
+  }
+  async componentDidMount(){
+    let data = await this.props.fetchAttending(this.props.id);
+    console.log(data);
   }
   static navigationOptions = { header: null };
   render(){
@@ -26,16 +31,16 @@ class ProfileScreen extends React.Component {
           <Text style={[Styles.largeBody,ProfileScreenStyle.interest]}> Interests </Text>
           <View style={[Styles.list,ProfileScreenStyle.interest]}>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#idk</Text>
+            <Text style={Styles.tagText}>#Keywords</Text>
             </View>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#what</Text>
+            <Text style={Styles.tagText}>#aren't</Text>
             </View>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#to</Text>
+            <Text style={Styles.tagText}>#implemented</Text>
             </View>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#expect</Text>
+            <Text style={Styles.tagText}>#rightnow</Text>
             </View>
             <TouchableOpacity style={[Styles.jumbo, ProfileScreenStyle.addMore]}><Text style={Styles.buttonText}>+</Text></TouchableOpacity>
           </View>
@@ -59,8 +64,8 @@ class ProfileScreen extends React.Component {
           <View id='recentActivities'>
             <Text style={Styles.subheader}> Recent Activities </Text>
             <View id='numberOfEvents' style={ProfileScreenStyle.numberOfEvents}>
-              <Text style={Styles.hurray}>Hurray! Last month you attended</Text>
-              <Text style={Styles.numberOfEvents}>3 events</Text>
+              <Text style={Styles.hurray}>Hurray! You have attended</Text>
+              <Text style={Styles.numberOfEvents}>{this.props.attending ? this.props.attending[0].length : '0'} events</Text>
             </View>
             <View id='eventsAttended' style={ProfileScreenStyle.listOfEvents}>
               <View style={ProfileScreenStyle.eventDetails}>
@@ -117,13 +122,15 @@ class ProfileScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    id: state.reducer.id,
     name: state.reducer.name,
-    picurl: state.reducer.picurl
+    picurl: state.reducer.picurl,
+    attending: state.reducer.attending,
   };
 };
 
 const mapDispatchToProps = {
-  logOut
+  logOut, fetchAttending
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(ProfileScreen);

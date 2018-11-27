@@ -1,4 +1,6 @@
 import { createStackNavigator, createBottomTabNavigator, createSwitchNavigator } from 'react-navigation';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 import HomeScreen from '../screens/HomeScreen.js';
 import LogInScreen from '../screens/LogInScreen.js';
 import DiscussionScreen from '../screens/DiscussionScreen.js';
@@ -17,12 +19,39 @@ const RootNav = createStackNavigator(
     },
   );
 const TabNav = createBottomTabNavigator({
-  Home: { screen: HomeScreen },
-  Calendar: { screen: CalendarScreen },
-  Search: {screen: SearchScreen},
-  Discussion: { screen: DiscussionScreen },
-  Profile: { screen: ProfileScreen },
-});
+  Home: { screen: HomeScreen, navigationOptions: {
+    tabBarLabel: 'Home',
+    tabBarIcon: ({tintColor}) => <Ionicons name='ios-home' size={35} color={tintColor}/>
+  },
+},
+  Calendar: { screen: CalendarScreen , navigationOptions: {
+    tabBarLabel: 'Calendar',
+    tabBarIcon: ({tintColor}) => <Ionicons name='ios-calendar' size={35} color={tintColor}/>
+  },
+},
+  Search: {screen: SearchScreen, navigationOptions: {
+    tabBarLabel: 'Search',
+    tabBarIcon: ({tintColor}) => <Ionicons name='ios-search' size={35} color={tintColor}/>
+  },
+},
+  Discussion: { screen: DiscussionScreen, navigationOptions: {
+    tabBarLabel: 'Discussion',
+    tabBarIcon: ({tintColor}) => <Ionicons name='ios-chatbubbles' size={35} color={tintColor}/>
+  },
+},
+  Profile: { screen: ProfileScreen, navigationOptions: {
+    tabBarLabel: 'Profile',
+    tabBarIcon: ({tintColor}) => <Ionicons name='ios-person' size={35} color={tintColor}/>
+  },
+ },
+},
+{
+  tabBarOptions: {
+      activeTintColor: 'orange',
+      inactiveTintColor: 'gray',
+  },
+}
+);
 const CarouselNav = createStackNavigator(
   {
     TabNav: TabNav,

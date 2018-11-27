@@ -1,8 +1,10 @@
 import * as HelAPI from '../scripts/HelAPI.js';
+import * as FBcon from '../scripts/FBcon.js';
 export const SAVE_NAME_AND_PIC = 'SAVE_NAME_AND_PIC';
 export const LOG_OUT = 'LOG_OUT';
 export const FETCH_WEEK = 'FETCH_WEEK';
 export const FETCH_DAY = 'FETCH_DAY';
+export const FETCH_ATTENDING = 'FETCH_ATTENDING';
 export function saveNameAndPic (name, picurl, id){
   return {
     type: SAVE_NAME_AND_PIC,
@@ -44,5 +46,18 @@ export function fetchTodayEvent(){
   return async (dispatch) => {
     let data = await HelAPI.getTodaysEvents();
     dispatch(exportTodayEvent(data.data));
+  }
+}
+export function exportAttending(data){
+  return {
+    type: FETCH_ATTENDING,
+    payload: data
+  }
+}
+
+export function fetchAttending(user){
+  return async (dispatch) => {
+    let data = await FBcon.getUserAttending(user);
+    dispatch(exportAttending(data));
   }
 }

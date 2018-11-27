@@ -18,7 +18,10 @@ class SearchScreen extends React.Component {
               <Text style={Styles.headline}>Search</Text>
               <Text style={Styles.largeBody}>This is the search screen.</Text>
             </View>
-            <TouchableOpacity style={Styles.profileIconContainer}>
+            <TouchableOpacity
+              style={Styles.profileIconContainer}
+              onPress={() => this.props.navigation.navigate('Profile')}
+            >
               <Image
                 style={Styles.profileIcon}
                 source={{uri: this.props.picurl}}

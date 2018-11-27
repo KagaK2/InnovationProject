@@ -32,7 +32,10 @@ class CalendarScreen extends React.Component {
         <View style={Styles.appBody}>
           <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text style={Styles.headline}>Calendar</Text>
-            <TouchableOpacity style={Styles.profileIconContainer}>
+            <TouchableOpacity
+              style={Styles.profileIconContainer}
+              onPress={() => this.props.navigation.navigate('Profile')}
+            >
               <Image
                 style={Styles.profileIcon}
                 source={{uri: this.props.picurl}}
@@ -43,7 +46,7 @@ class CalendarScreen extends React.Component {
           <FlatList
             style = {CalendarScreenStyle.boxWithShadow}
             data = {this.props.week}
-            renderItem = {({item}) => <BigCard onPress={() => this._redirect(item)} hashtag="theater" date={item.start_time ? item.start_time : item.end_time} eventName={item.name.en ? item.name.en : item.name.fi} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} going="Me and mah homies" />}
+            renderItem = {({item}) => <BigCard onPress={() => this._redirect(item)} hashtag="theater" date={item.start_time ? item.start_time : item.end_time} eventName={item.name ? (item.name.en ? item.name.en : item.name.fi) : 'untitled'} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} going="Me and mah homies" />}
             keyExtractor = {this._keyExtractor}
             />
           </View>

@@ -41,7 +41,10 @@ class HomeScreen extends React.Component {
               <Text style={Styles.headline}>Home</Text>
               <Text style={Styles.largeBody}>Here is your discovery queue today.</Text>
             </View>
-            <TouchableOpacity style={Styles.profileIconContainer}>
+            <TouchableOpacity
+              style={Styles.profileIconContainer}
+              onPress={() => this.props.navigation.navigate('Profile')}
+            >
               <Image
                 style={Styles.profileIcon}
                 source={{uri: this.props.picurl}}
