@@ -15,6 +15,8 @@ export default class SearchBar extends React.Component {
         style = {{fontSize: 16, marginLeft: 8}}
         inlineImageLeft = 'search_icon'
         placeholder='What are you looking for?'
+        onFocus = {this.props.onFocus}
+        onBlur = {this.props.onBlur}
         />
       </View>
     )

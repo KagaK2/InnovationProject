@@ -35,8 +35,15 @@ export const Styles = StyleSheet.create({
   },
   appBody: {
     flex: 1,
-    marginLeft: 16,
+    paddingLeft: 16,
     paddingTop: 50,
+  },
+  focusAppBody: {
+    flex: 1,
+    paddingLeft: 16
+  },
+  focusColorBody: {
+    backgroundColor: 'grey',
   },
   colorBody: {
     backgroundColor: 'white',
