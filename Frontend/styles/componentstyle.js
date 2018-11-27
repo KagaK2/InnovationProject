@@ -40,7 +40,6 @@ export const Styles = StyleSheet.create({
   },
   focusAppBody: {
     flex: 1,
-    paddingLeft: 16
   },
   focusColorBody: {
     backgroundColor: 'grey',

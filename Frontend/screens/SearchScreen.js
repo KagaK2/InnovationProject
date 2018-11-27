@@ -29,14 +29,13 @@ class SearchScreen extends React.Component {
               />
             </TouchableOpacity></View>
 : <View></View>}
-          <View style={{backgroundColor: 'white'}}>
+          <View style={{backgroundColor: 'white',paddingBottom: 8, paddingLeft: this.state.searchFocus ? 16 : 0}}>
             <SearchBar
               onFocus={()=>this.setState({searchFocus: true})}
               onBlur={()=>this.setState({searchFocus: false})}
             />
           </View>
           <View style={{opacity: 0.3,flex:1, backgroundColor:'grey'}}>
-            <Text>GOGOGO</Text>
           </View>
         </View>
       </ScrollView>
