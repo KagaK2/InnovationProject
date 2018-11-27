@@ -379,6 +379,15 @@ export async function getAllEventAttendeePics(event) {
    return newArray;
 }
 
+export async function getAllEventAttendeeNames(event) {
+  let snapshot = await usersRef.where("attending", "array-contains", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().name)
+   })
+  return newArray;
+}
+
 
 //   /\
 //   |
