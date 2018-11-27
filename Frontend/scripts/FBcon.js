@@ -214,6 +214,15 @@ export async function getUserId(user) {
     }
 }
 
+export async function getUserPic(user) {
+  let snapshot = await usersRef.where("id", "==", user).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().pic)
+   })
+   return newArray;
+}
+
 export async function updateUserId(user, id) {
   usersRef.doc(user).update({id: id});
 }
@@ -360,6 +369,16 @@ export async function updateEventExpired(event, expired) {
 export async function updateEventDescription(event, desc) {
   usersRef.doc(event).update({desc: desc});
 }
+
+export async function getAllEventAttendeePics(event) {
+  let snapshot = await usersRef.where("attending", "array-contains", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().pic)
+   })
+   return newArray;
+}
+
 
 //   /\
 //   |
