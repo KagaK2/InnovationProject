@@ -334,10 +334,19 @@ export async function getEventId(event) {
   let snapshot = await eventsRef.where("id", "==", event).get()
   let newArray = []
   snapshot.forEach(doc => {
-     console.log("Event id array: " + doc.data().id);
+     console.log("Event id array: " + doc.data());
      newArray.push(doc.data().id)
    })
    return newArray;
+}
+
+export async function getAllEventData(event) {
+  let snapshot = await eventsRef.where("id", "==", event).get()
+  let newArray = []
+  snapshot.forEach(doc => {
+     newArray.push(doc.data())
+   })
+  return newArray;
 }
 
 export async function getEventName(event) {
@@ -388,6 +397,13 @@ export async function getAllEventAttendeeNames(event) {
   return newArray;
 }
 
+export async function getEventsByArray(eventsarray) {
+  let newArray = [];
+  for(e in eventsarray) {
+    newArray.push(await getAllEventData(eventsarray[e]));
+  }
+  return newArray;
+}
 
 //   /\
 //   |
