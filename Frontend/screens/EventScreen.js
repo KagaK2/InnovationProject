@@ -5,6 +5,7 @@ import {Styles} from '../styles/componentstyle.js';
 import {EventScreenStyle} from '../styles/screenstyle.js';
 import UserIcon from '../components/UserIcon.js';
 import * as FBcon from '../scripts/FBcon.js';
+import {Ionicons} from '@expo/vector-icons';
 
 class EventScreen extends React.Component {
   static navigationOptions = {
@@ -62,7 +63,7 @@ class EventScreen extends React.Component {
         <View>
           <ImageBackground source={{uri: this.state.event.images.length > 0 ? this.state.event.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'}} style={{height: 200, width: '100%'}}>
             <TouchableOpacity onPress={this._goBack} title="Back" style={EventScreenStyle.backButton}>
-              <Image source={{uri: 'https://i.imgur.com/Usn22lm.png'}} style={{height: 36, width: 36}}/>
+              <Ionicons name='ios-arrow-back' size={36} color='#FFA06E'/>
             </TouchableOpacity>
           </ImageBackground>
         </View>
@@ -74,8 +75,8 @@ class EventScreen extends React.Component {
           <Text style={[Styles.title,EventScreenStyle.title]}>{this.state.event.name.en ? this.state.event.name.en : this.state.event.name.fi}</Text>
           <Text>{this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi}
             </Text>
-          <Text> People who will attend this event </Text>
-          <View>
+          <Text style={EventScreenStyle.eventAttendingText}> People who will attend this event </Text>
+          <View style={EventScreenStyle.eventAttendees}>
             {this.state.attendees.map(this.attendeeRender)}
           </View>
           <View style={EventScreenStyle.checkIn}>

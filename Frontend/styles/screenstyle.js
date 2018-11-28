@@ -143,10 +143,21 @@ export const EventScreenStyle = StyleSheet.create({
     justifyContent:'center',
   },
   checkInButton: {
-    backgroundColor: '#1F8FFF',
+    backgroundColor: '#FFA06E',
+    marginTop: 10,
   },
   checkInButtonText: {
     color: '#FFFFFF',
-  }
+  },
+  eventAttendingText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+  eventAttendees: {
+    flex: 1,
+    flexDirection: 'row',
+    borderRadius: 50,
+  },
 
 });
