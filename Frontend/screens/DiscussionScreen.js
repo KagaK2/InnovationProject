@@ -5,6 +5,14 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default class DiscussionScreen extends React.Component {
   static navigationOptions = { header: null };
+  _redirect = (item) => {
+    this.props.navigation.navigate(
+      {
+        routeName: 'OtherUserScreen',
+        params: {}
+      }
+    );
+  }
   render(){
     return(
       <ScrollView style={Styles.colorBody}>
@@ -24,6 +32,9 @@ export default class DiscussionScreen extends React.Component {
               />
             </TouchableOpacity>
           </View>
+          <TouchableOpacity onPress={()=>this._redirect}>
+            <Text>ClIcK HeRE fOr oTHeR uSEr SCreEn</Text
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );

@@ -58,6 +58,7 @@ export function exportAttending(data){
 export function fetchAttending(user){
   return async (dispatch) => {
     let data = await FBcon.getUserAttending(user);
-    dispatch(exportAttending(data));
+    let eventArray = await FBcon.getEventsByArray(data);
+    dispatch(exportAttending(eventArray));
   }
 }

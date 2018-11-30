@@ -13,11 +13,10 @@ class ProfileScreen extends React.Component {
   }
   async componentDidMount(){
     let data = await this.props.fetchAttending(this.props.id);
-    console.log(data);
   }
   static navigationOptions = { header: null };
   render(){
-    console.log(this.props.attending + 'lolo')
+    console.log(this.props.attending);
     return(
       <ScrollView style={Styles.colorBody}>
         <View style={Styles.appBody}>
@@ -66,7 +65,7 @@ class ProfileScreen extends React.Component {
             <Text style={Styles.subheader}> Recent Activities </Text>
             <View id='numberOfEvents' style={ProfileScreenStyle.numberOfEvents}>
               <Text style={Styles.hurray}>Hurray! You have attended</Text>
-              <Text style={Styles.numberOfEvents}>{(this.props.attending&&this.props.attending.length>0) ? this.props.attending[0].length : '0'} events</Text>
+              <Text style={Styles.numberOfEvents}>{(this.props.attending&&this.props.attending.length>0) ? this.props.attending.length : '0'} events</Text>
             </View>
             <View id='eventsAttended' style={ProfileScreenStyle.listOfEvents}>
               <View style={ProfileScreenStyle.eventDetails}>
