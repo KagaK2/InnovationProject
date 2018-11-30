@@ -99,6 +99,10 @@ export const ProfileScreenStyle = StyleSheet.create({
   signOut: {
     backgroundColor: '#FFA06E',
   },
+  backButton: {
+    marginTop: 16,
+    marginLeft: 16,
+  },
 });
 export const LoginScreenStyle = StyleSheet.create({
   loginButton: {

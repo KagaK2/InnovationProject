@@ -1,19 +1,15 @@
 import React from 'react';
 import {View, TextInput, Image} from 'react-native';
 import {SearchBarStyle} from '../styles/componentstyle.js';
-import SearchIcon from '../img/search_icon.png';
+import { Ionicons } from '@expo/vector-icons';
 
 export default class SearchBar extends React.Component {
   render() {
     return (
       <View style={SearchBarStyle.searchBar}>
-        <Image
-          source={SearchIcon}
-          style ={{height: 20, width: 20}}
-        />
+        <Ionicons name='ios-search' size={20} color={'#A6A6A6'}/>
         <TextInput
-        style = {{fontSize: 16, marginLeft: 8}}
-        inlineImageLeft = 'search_icon'
+        style = {{flex: 1, fontSize: 16, marginLeft: 8}}
         placeholder='What are you looking for?'
         onFocus = {this.props.onFocus}
         onBlur = {this.props.onBlur}

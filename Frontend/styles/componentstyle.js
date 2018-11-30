@@ -108,6 +108,10 @@ export const Styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 0.01,
   },
+  otherUserAppBody: {
+    flex: 1,
+    paddingLeft: 16,
+  },
 });
 export const SmallCardStyle = StyleSheet.create({
   card: {
