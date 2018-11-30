@@ -27,7 +27,7 @@ export default class HomeCarousel extends React.Component {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <FlatList
               data = {this.props.data}
-              renderItem = { ({item}) => <CarouselCard key={item.id} onPress = {item.renderFunction} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} title={item.name.en ? item.name.en : item.name.fi}/>}
+              renderItem = { ({item}) => <CarouselCard key={item.id} onPress = {item.renderFunction} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} title={item.name ? (item.name.en ? item.name.en : item.name.fi) : 'untitled'}/>}
               keyExtractor = {this._keyExtractor}
               extraData={this.props.data}horizontal={true} showsHorizontalScrollIndicator={false}
               />
