@@ -33,7 +33,7 @@ export default class DiscussionScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <TouchableOpacity onPress={()=>this._redirect}>
-            <Text>ClIcK HeRE fOr oTHeR uSEr SCreEn</Text
+            <Text>ClIcK HeRE fOr oTHeR uSEr SCreEn</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
