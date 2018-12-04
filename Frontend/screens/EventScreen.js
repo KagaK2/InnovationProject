@@ -22,11 +22,12 @@ class EventScreen extends React.Component {
   _goBack(){
     this.props.navigation.navigate('TabNav');
   }
-  componentDidMount(){
+  async componentDidMount(){
     let data = this.props.navigation.getParam('data', 'untitled');
     this.attendeeFetch(data);
+    let event = await HelAPI.getEventById(data.id);
     this.setState(
-      {event: data}
+      {event: event}
     );
   }
   async eventCheck(){

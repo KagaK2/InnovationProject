@@ -33,7 +33,7 @@ class ProfileScreen extends React.Component {
        style= {{flex : 1, alignItems: 'center'}}>
         <Image
         style={Styles.eventIcon}
-        source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
+        source={{uri: 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'}}
       />
       </TouchableOpacity>
       <View style={{flex : 3, justifyContent: 'space-around',}}>
