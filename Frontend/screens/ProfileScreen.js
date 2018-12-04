@@ -10,13 +10,43 @@ import { logOut, fetchAttending } from '../actions/index.js';
 class ProfileScreen extends React.Component {
   constructor(props){
     super(props);
+    this.renderAttending = this.renderAttending.bind(this);
   }
   async componentDidMount(){
-    let data = await this.props.fetchAttending(this.props.id);
+    this.props.fetchAttending(this.props.id);
+  }
+  _redirect = (item) => {
+    this.props.navigation.navigate(
+      {
+        routeName : 'EventScreen',
+        params: {data: item},
+      }
+    );
+  }
+  renderAttending(array){
+    if(array[0] != undefined){
+      console.log(array[0]);
+    return (
+    <View key={array[0].id} style={ProfileScreenStyle.eventDetails}>
+      <TouchableOpacity
+        onPress={()=>this._redirect(array[0])}
+       style= {{flex : 1, alignItems: 'center'}}>
+        <Image
+        style={Styles.eventIcon}
+        source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
+      />
+      </TouchableOpacity>
+      <View style={{flex : 3, justifyContent: 'space-around',}}>
+        <Text style={ProfileScreenStyle.eventAchievementTime}>{array[0].date}</Text>
+        <Text style={ProfileScreenStyle.eventAchievement}>You attended {array[0].name}</Text>
+      </View>
+    </View>
+  );
+}
   }
   static navigationOptions = { header: null };
   render(){
-    console.log(this.props.attending);
+    const {attending} = this.props;
     return(
       <ScrollView style={Styles.colorBody}>
         <View style={Styles.appBody}>
@@ -68,42 +98,7 @@ class ProfileScreen extends React.Component {
               <Text style={Styles.numberOfEvents}>{(this.props.attending&&this.props.attending.length>0) ? this.props.attending.length : '0'} events</Text>
             </View>
             <View id='eventsAttended' style={ProfileScreenStyle.listOfEvents}>
-              <View style={ProfileScreenStyle.eventDetails}>
-                <View style= {{flex : 1, alignItems: 'center'}}>
-                  <Image
-                  style={Styles.eventIcon}
-                  source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
-                />
-                </View>
-                <View style={{flex : 3, justifyContent: 'space-around',}}>
-                  <Text style={ProfileScreenStyle.eventAchievementTime}>3 minutes ago</Text>
-                  <Text style={ProfileScreenStyle.eventAchievement}>You received medal Daxua</Text>
-                </View>
-              </View>
-              <View style={ProfileScreenStyle.eventDetails}>
-                <View style= {{flex : 1, alignItems: 'center'}}>
-                  <Image
-                  style={Styles.eventIcon}
-                  source={{uri: 'https://i.imgur.com/O6szkhx.png'}}
-                />
-                </View>
-                <View style={{flex : 3, justifyContent: 'space-around',}}>
-                  <Text style={ProfileScreenStyle.eventAchievementTime}>Yesterday, 20:00</Text>
-                  <Text style={ProfileScreenStyle.eventAchievement}>You checked in at Akali</Text>
-                </View>
-              </View>
-              <View style={ProfileScreenStyle.eventDetails}>
-                <View style= {{flex : 1, alignItems: 'center'}}>
-                  <Image
-                  style={Styles.eventIcon}
-                  source={{uri: 'https://i.imgur.com/kP814Ja.jpg'}}
-                />
-                </View>
-                <View style={{flex : 3, justifyContent: 'space-around',}}>
-                  <Text style={ProfileScreenStyle.eventAchievementTime}>24/09/2018, 20:00</Text>
-                  <Text style={ProfileScreenStyle.eventAchievement}>You attended Lee Sin</Text>
-                </View>
-              </View>
+              {!attending ? <View>Give it a try!</View> : attending.map(this.renderAttending)}
             </View>
           </View>
           <View id ='signOut' style={ProfileScreenStyle.signOutSection}>

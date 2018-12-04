@@ -76,7 +76,7 @@ class HomeScreen extends React.Component {
           <View style={HomeScreenStyle.pref}>
             <Text style={Styles.largeBody}> Want something else? </Text>
             <Text style={Styles.largeBody}> Let us know! </Text>
-            <TouchableOpacity style={[Styles.jumbo, HomeScreenStyle.prefButton]}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>Update Preferences</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile')} style={[Styles.jumbo, HomeScreenStyle.prefButton]}><Text style={[Styles.buttonText,{color: '#FFFFFF'}]}>Update Preferences</Text></TouchableOpacity>
           </View>
         </View>
       </ScrollView>

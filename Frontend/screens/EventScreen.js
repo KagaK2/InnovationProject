@@ -5,6 +5,7 @@ import {Styles} from '../styles/componentstyle.js';
 import {EventScreenStyle} from '../styles/screenstyle.js';
 import UserIcon from '../components/UserIcon.js';
 import * as FBcon from '../scripts/FBcon.js';
+import * as HelAPI from '../scripts/HelAPI.js';
 import {Ionicons} from '@expo/vector-icons';
 
 class EventScreen extends React.Component {
@@ -31,6 +32,15 @@ class EventScreen extends React.Component {
   async eventCheck(){
     await FBcon.checkEvent(this.props.id, this.state.event.id,this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi);
     await FBcon.addAttending(this.props.id, this.state.event.id);
+    let attendees = this.state.attendees;
+    let checkIn = attendees.findIndex(x => x.id==this.props.id);
+    if (checkIn == -1) {
+      let info = await FBcon.getUserData(this.props.id);
+      console.log(info);
+      attendees.push(info[0]);
+      this.setState({attendees: attendees});
+    }
+
   }
   async attendeeFetch(data){
     try {
