@@ -98,7 +98,7 @@ class ProfileScreen extends React.Component {
               <Text style={Styles.numberOfEvents}>{(this.props.attending&&this.props.attending.length>0) ? this.props.attending.length : '0'} events</Text>
             </View>
             <View id='eventsAttended' style={ProfileScreenStyle.listOfEvents}>
-              {!attending ? <View>Give it a try!</View> : attending.map(this.renderAttending)}
+              {!attending ? <View><Text>Give it a try!</Text></View> : attending.map(this.renderAttending)}
             </View>
           </View>
           <View id ='signOut' style={ProfileScreenStyle.signOutSection}>
