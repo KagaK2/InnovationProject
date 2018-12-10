@@ -9,6 +9,8 @@ import {HomeScreenStyle} from '../styles/screenstyle.js';
 import { fetchTodayEvent } from '../actions/index.js';
 import * as FBcon from '../scripts/FBcon';
 
+
+// HomeScreen, right now only the first scrollview/ group is implemented with API as a example, since the test API have mostly no picture at all.
 class HomeScreen extends React.Component {
   constructor(props){
     super(props);

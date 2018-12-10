@@ -4,7 +4,7 @@ import {ProfileScreenStyle} from '../styles/screenstyle.js';
 import {Styles} from '../styles/componentstyle.js';
 import { connect } from 'react-redux';
 import {Ionicons} from '@expo/vector-icons';
-
+//Keywords/ Interests haven't been implemented yet.
 export default class OtherUserScreen extends React.Component {
   _goBack(){
     this.props.navigation.navigate('TabNav');

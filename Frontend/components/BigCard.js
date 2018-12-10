@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableWithoutFeedback, View, Text, Image} from 'react-native';
 import {Styles, BigCardStyle} from '../styles/componentstyle.js';
-
+//component used in Calendar Screen.
 export default class BigCard extends React.Component {
   constructor(props){
     super(props);

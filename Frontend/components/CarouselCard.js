@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableWithoutFeedback, Alert, ImageBackground} from 'react-native';
 import {Styles, CarouselCardStyle} from '../styles/componentstyle.js';
+//Component are used in HomeCarousel component.
 export default class CarouselCard extends React.Component{
   constructor(props){
     super(props);

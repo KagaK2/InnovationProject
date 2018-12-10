@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { logOut, fetchAttending } from '../actions/index.js';
 
 
-
+//Keywords/ Interests and Settings haven't been implemented yet.
 class ProfileScreen extends React.Component {
   constructor(props){
     super(props);

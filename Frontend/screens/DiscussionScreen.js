@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import {Styles} from '../styles/componentstyle.js';
 import { Ionicons } from '@expo/vector-icons';
-
+//Suppposedly to be the chat part/ discussion part of the app
 export default class DiscussionScreen extends React.Component {
   static navigationOptions = { header: null };
   _redirect = () => {
@@ -21,7 +21,7 @@ export default class DiscussionScreen extends React.Component {
           <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
             <View>
               <Text style={Styles.headline}>Discussion</Text>
-              <Text style={Styles.largeBody}>This is the discussion screen.</Text>
+              <Text style={Styles.largeBody}>Discussion is not implemented right now.</Text>
             </View>
             <TouchableOpacity
               style={Styles.profileIconContainer}
@@ -33,9 +33,6 @@ export default class DiscussionScreen extends React.Component {
               />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={()=>this._redirect()}>
-            <Text>ClIcK HeRE fOr oTHeR uSEr SCreEn</Text>
-          </TouchableOpacity>
         </View>
       </ScrollView>
     );

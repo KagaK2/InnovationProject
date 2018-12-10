@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {saveNameAndPic} from '../actions/index.js';
-
+//Screen will check the user has logged in or not. If yes, navigate to HomeScreen, if no, to the login screen instead.
 class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props);

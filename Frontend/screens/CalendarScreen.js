@@ -7,7 +7,7 @@ import * as HelAPI from '../scripts/HelAPI.js';
 import {fetchWeekEvent} from '../actions/index.js'
 import { connect } from 'react-redux';
 
-
+//Event for next 7 days. 
 class CalendarScreen extends React.Component {
   constructor(props){
     super(props);

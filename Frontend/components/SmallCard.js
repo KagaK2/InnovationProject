@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {Styles, SmallCardStyle} from '../styles/componentstyle.js';
-
+// Component for home screen. Not implemented with the API yet.
 export default class SmallCard extends React.Component {
   constructor(props){
     super(props);

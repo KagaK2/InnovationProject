@@ -2,7 +2,7 @@ import React from 'react';
 import {View, TextInput, Image} from 'react-native';
 import {SearchBarStyle} from '../styles/componentstyle.js';
 import { Ionicons } from '@expo/vector-icons';
-
+//Component are used in the SearchScreen
 export default class SearchBar extends React.Component {
   render() {
     return (

@@ -5,6 +5,8 @@ export const LOG_OUT = 'LOG_OUT';
 export const FETCH_WEEK = 'FETCH_WEEK';
 export const FETCH_DAY = 'FETCH_DAY';
 export const FETCH_ATTENDING = 'FETCH_ATTENDING';
+//This file contains action creators in redux
+//Function for saving the current user's name, picture and id.
 export function saveNameAndPic (name, picurl, id){
   return {
     type: SAVE_NAME_AND_PIC,
@@ -13,11 +15,13 @@ export function saveNameAndPic (name, picurl, id){
     id: id,
   }
 };
+//Function for logging out
 export function logOut() {
   return {
     type: LOG_OUT
   }
 }
+// 2 functions below are used for fetching the events happening in the next 7 days
 export function exportWeekEvent(data){
   return {
     type: FETCH_WEEK,
@@ -34,7 +38,7 @@ export function fetchWeekEvent(){
     dispatch(exportWeekEvent(data.data));
   }
 }
-
+// 2 functions below are used for fetching the events happening today
 export function exportTodayEvent(data){
   return {
     type: FETCH_DAY,
@@ -48,6 +52,8 @@ export function fetchTodayEvent(){
     dispatch(exportTodayEvent(data.data));
   }
 }
+
+// 2 functions below are used for fetching the events that the current user are attending/ attended.
 export function exportAttending(data){
   return {
     type: FETCH_ATTENDING,

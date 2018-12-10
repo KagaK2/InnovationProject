@@ -3,7 +3,7 @@ import {View, ScrollView, Text, TextInput, TouchableOpacity, Image} from 'react-
 import {Styles} from '../styles/componentstyle.js';
 import SearchBar from '../components/SearchBar.js';
 import { connect } from 'react-redux';
-
+//Are not implemented yet.
 class SearchScreen extends React.Component {
   constructor(props){
     super(props);

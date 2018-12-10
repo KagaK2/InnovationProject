@@ -12,7 +12,7 @@ import EventScreen from '../screens/EventScreen.js';
 import SearchScreen from '../screens/SearchScreen.js';
 import OtherUserScreen from '../screens/OtherUserScreen.js';
 
-
+//File for setting up the navigations in the app.
 const RootNav = createStackNavigator(
    {
       Login: LogInScreen,

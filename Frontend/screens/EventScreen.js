@@ -7,7 +7,7 @@ import UserIcon from '../components/UserIcon.js';
 import * as FBcon from '../scripts/FBcon.js';
 import * as HelAPI from '../scripts/HelAPI.js';
 import {Ionicons} from '@expo/vector-icons';
-
+//Rendering each event depends on the input.
 class EventScreen extends React.Component {
   static navigationOptions = {
     title: 'Your event',
@@ -22,6 +22,7 @@ class EventScreen extends React.Component {
   _goBack(){
     this.props.navigation.navigate('TabNav');
   }
+  //get data from the navigation props first, then fetch the attendees and event from the firebase database, then set the returned data as a state.
   async componentDidMount(){
     let data = this.props.navigation.getParam('data', 'untitled');
     this.attendeeFetch(data);
@@ -30,6 +31,7 @@ class EventScreen extends React.Component {
       {event: event}
     );
   }
+  //run after the user pressing the checkin button
   async eventCheck(){
     await FBcon.checkEvent(this.props.id, this.state.event.id,this.state.event.name.en ? this.state.event.name.en: this.state.event.name.fi, this.state.event.start_time ? this.state.event.start_time : this.state.event.end_time, this.state.event.description.en ? this.state.event.description.en : this.state.event.description.fi);
     await FBcon.addAttending(this.props.id, this.state.event.id);

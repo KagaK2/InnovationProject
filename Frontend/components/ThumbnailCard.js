@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, Text, TouchableWithoutFeedback, Alert, ImageBackground} from 'react-native';
 import {ThumbnailCardStyle} from '../styles/componentstyle.js';
+//Component for HomeScreen. Not implemented with the API yet.
 export default class ThumbnailCard extends React.Component{
   constructor(props){
     super(props);
   }
-
 
   render(){
     return(
