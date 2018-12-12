@@ -15,6 +15,7 @@ export default function reducer(state = {}, action){
     case FETCH_ATTENDING:
       return {attending: action.payload, ...state};
     case FETCH_ATTENDING_BY_ARRAY:
+      console.log("DITME" + action.payload);
       return {attendingArray: action.payload, ...state};
     default:
       return state;

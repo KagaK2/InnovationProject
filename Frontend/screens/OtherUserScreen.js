@@ -26,6 +26,11 @@ class OtherUserScreen extends React.Component {
       }
     );
   }
+  componentDidUpdate(prevProps){
+    if (this.props !== prevProps){
+    let data = this.props.navigation.getParam('data','untitled');
+  }
+  }
   renderAttending = (array) => {
     if(array[0] != undefined){
     return (

@@ -21,7 +21,6 @@ class EventScreen extends React.Component {
     this.state = {event: {images: [], name: {}, description: {}, start_time: '', end_time: ''}, attendees: []};
   }
   _goBack(){
-    console.log("Going back");
     this.props.navigation.navigate('TabNav');
   }
   _redirect = (item) => {
@@ -42,8 +41,6 @@ class EventScreen extends React.Component {
     );
   }
   async componentDidUpdate(prevProps){
-    console.log(this.props.navigation.getParam('data','untitled').id);
-    console.log(this.state.event.id);
     if(this.props.navigation.getParam('data','untitled').id!= this.state.event.id){
       let data = this.props.navigation.getParam('data', 'untitled');
       this.attendeeFetch(data);
@@ -61,7 +58,6 @@ class EventScreen extends React.Component {
     let checkIn = attendees.findIndex(x => x.id==this.props.id);
     if (checkIn == -1) {
       let info = await FBcon.getUserData(this.props.id);
-      console.log(info);
       attendees.push(info[0]);
       this.setState({attendees: attendees});
     }
@@ -94,7 +90,6 @@ class EventScreen extends React.Component {
   }
 
   render(){
-    console.log(this.props.navigation.getParam('data','untitled'));
     return(
       <View>
       <ScrollView>
