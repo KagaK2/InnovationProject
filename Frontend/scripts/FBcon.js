@@ -28,14 +28,16 @@ const eventsRef = db.collection('events');
 // attended : array
 // attInt : integer
 // pic : string
-export async function createUser(id, name, attending, attended, attInt, pic) {
+//
+export async function createUser(id, name, attending, attended, attInt, pic, keywords) {
   var data = {
     id: id,
     name: name,
     attending: attending,
     attended: attended,
     attInt: attInt,
-    pic: pic
+    pic: pic,
+    keywords: keywords
   };
 
   usersRef.doc(id).set(data);
@@ -53,14 +55,16 @@ export async function removeUser(id) {
 // desc : string
 // date : string
 // attendees : array
-export async function createEvent(id, name, expired, desc, date, attendees) {
+// pic : string
+export async function createEvent(id, name, expired, desc, date, attendees, pic) {
   var data = {
     id: id,
     name: name,
     expired: expired,
     desc: desc,
     date: date,
-    attendees: attendees
+    attendees: attendees,
+    pic: pic
   };
 
   eventsRef.doc(id).set(data);
@@ -91,6 +95,7 @@ export async function checkUser(userId, name, picture) {
             attended: [],
             attInt: 0,
             pic: picture,
+            keywords: []
           }
           usersRef.doc(userId).set(data);
         }
@@ -179,12 +184,22 @@ export async function getUserAttending(user) {
    return newArray;
 }
 
-export async function getUserAttended(user) {
-  let snapshot = await usersRef.where("id", "==", user).get()
-  let newArray = []
+export async function getUserKeywords(user) {
+  let snapshot = await usersRef.where("id", "==", user).get();
+  let newArray = [];
   snapshot.forEach(doc => {
-    newArray.push(doc.data().attended)
-   })
+    newArray.push(doc.data().keywords);
+  });
+  console.log(newArray);
+  return newArray;
+}
+
+export async function getUserAttended(user) {
+  let snapshot = await usersRef.where("id", "==", user).get();
+  let newArray = [];
+  snapshot.forEach(doc => {
+    newArray.push(doc.data().attended);
+  });
    return newArray;
 }
 
@@ -242,6 +257,14 @@ export async function addAttending(user, event) {
 
 export async function removeAttending(user, event) {
   usersRef.doc(user).update({attending: firebase.firestore.FieldValue.arrayRemove(event)});
+}
+
+export async function removeAllKeywords(user) {
+  usersRef.doc(user).update({keywords: []});
+}
+
+export async function addKeyword(user, map) {
+  usersRef.doc(user).update({keywords: firebase.firestore.FieldValue.arrayUnion(map)});
 }
 
 export async function addAttended(user, event) {
