@@ -9,12 +9,10 @@ export default class UserIcon extends React.Component{
   render(){
     return(
     <View>
-      <TouchableOpacity>
         <Image
           style={{height: 40, width: 40, borderRadius: 5, marginRight: 3}}
           source={{uri: this.props.image ? this.props.image : 'https://i.imgur.com/eEnMLyt.png'}}
           />
-      </TouchableOpacity>
     </View>
   );
   }

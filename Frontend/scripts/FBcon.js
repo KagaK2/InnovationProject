@@ -423,8 +423,8 @@ export async function getAllEventAttendeeNames(event) {
 
 export async function getEventsByArray(eventsarray) {
   let newArray = [];
-  for(e in eventsarray[0]) {
-    newArray.push(await getAllEventData(eventsarray[0][e]));
+  for(e in eventsarray) {
+    newArray.push(await getAllEventData(eventsarray[e]));
   }
   return newArray;
 }

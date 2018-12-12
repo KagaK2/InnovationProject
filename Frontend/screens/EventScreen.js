@@ -17,10 +17,20 @@ class EventScreen extends React.Component {
     this._goBack = this._goBack.bind(this);
     this.eventCheck = this.eventCheck.bind(this);
     this.attendeeFetch = this.attendeeFetch.bind(this);
+    this.attendeeRender = this.attendeeRender.bind(this);
     this.state = {event: {images: [], name: {}, description: {}, start_time: '', end_time: ''}, attendees: []};
   }
   _goBack(){
+    console.log("Going back");
     this.props.navigation.navigate('TabNav');
+  }
+  _redirect = (item) => {
+    this.props.navigation.navigate(
+      {
+        routeName: 'OtherUserScreen',
+        params: {data: item},
+      }
+    )
   }
   //get data from the navigation props first, then fetch the attendees and event from the firebase database, then set the returned data as a state.
   async componentDidMount(){
@@ -30,6 +40,18 @@ class EventScreen extends React.Component {
     this.setState(
       {event: event}
     );
+  }
+  async componentDidUpdate(prevProps){
+    console.log(this.props.navigation.getParam('data','untitled').id);
+    console.log(this.state.event.id);
+    if(this.props.navigation.getParam('data','untitled').id!= this.state.event.id){
+      let data = this.props.navigation.getParam('data', 'untitled');
+      this.attendeeFetch(data);
+      let event = await HelAPI.getEventById(data.id);
+      this.setState(
+        {event: event}
+      );
+    }
   }
   //run after the user pressing the checkin button
   async eventCheck(){
@@ -63,13 +85,16 @@ class EventScreen extends React.Component {
 
   attendeeRender(arrayData){
     return(
-      <View key={arrayData.id}>
+      <View>
+      <TouchableOpacity key={arrayData.id} onPress={() => this._redirect(arrayData)}>
         <UserIcon image={arrayData.pic}/>
+      </TouchableOpacity>
       </View>
     );
   }
 
   render(){
+    console.log(this.props.navigation.getParam('data','untitled'));
     return(
       <View>
       <ScrollView>

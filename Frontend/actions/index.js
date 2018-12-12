@@ -5,6 +5,7 @@ export const LOG_OUT = 'LOG_OUT';
 export const FETCH_WEEK = 'FETCH_WEEK';
 export const FETCH_DAY = 'FETCH_DAY';
 export const FETCH_ATTENDING = 'FETCH_ATTENDING';
+export const FETCH_ATTENDING_BY_ARRAY = 'FETCH_ATTENDING_BY_ARRAY';
 //This file contains action creators in redux
 //Function for saving the current user's name, picture and id.
 export function saveNameAndPic (name, picurl, id){
@@ -64,7 +65,20 @@ export function exportAttending(data){
 export function fetchAttending(user){
   return async (dispatch) => {
     let data = await FBcon.getUserAttending(user);
-    let eventArray = await FBcon.getEventsByArray(data);
+    let eventArray = await FBcon.getEventsByArray(data[0]);
     dispatch(exportAttending(eventArray));
+  }
+}
+
+export function exportAttendingByArray(data){
+  return {
+    type: FETCH_ATTENDING_BY_ARRAY,
+    payload: data
+  }
+}
+export function fetchAttendingByArray(array){
+  return async (dispatch) => {
+    let eventArray = await FBcon.getEventsByArray(array);
+    dispatch(exportAttendingByArray(eventArray));
   }
 }

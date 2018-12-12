@@ -4,13 +4,50 @@ import {ProfileScreenStyle} from '../styles/screenstyle.js';
 import {Styles} from '../styles/componentstyle.js';
 import { connect } from 'react-redux';
 import {Ionicons} from '@expo/vector-icons';
+import * as FBcon from '../scripts/FBcon.js'
+import {fetchAttendingByArray} from '../actions/index.js';
 //Keywords/ Interests haven't been implemented yet.
-export default class OtherUserScreen extends React.Component {
+class OtherUserScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
   _goBack(){
     this.props.navigation.navigate('TabNav');
   }
+  async componentDidMount(){
+    let data = this.props.navigation.getParam('data','untitled');
+    this.props.fetchAttendingByArray(data.attending);
+  }
+  _redirect = (item) => {
+    this.props.navigation.navigate(
+      {
+        routeName : 'EventScreen',
+        params: {data: item},
+      }
+    );
+  }
+  renderAttending = (array) => {
+    if(array[0] != undefined){
+    return (
+    <View key={array[0].id} style={ProfileScreenStyle.eventDetails}>
+      <TouchableOpacity
+        onPress={()=>this._redirect(array[0])}
+       style= {{flex : 1, alignItems: 'center'}}>
+        <Image
+        style={Styles.eventIcon}
+        source={{uri: 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'}}
+      />
+      </TouchableOpacity>
+      <View style={{flex : 3, justifyContent: 'space-around',}}>
+        <Text style={ProfileScreenStyle.eventAchievementTime}>{array[0].date}</Text>
+        <Text style={ProfileScreenStyle.eventAchievement}>You attended {array[0].name}</Text>
+      </View>
+    </View>
+  );}}
 
   render(){
+    let data = this.props.navigation.getParam('data','untitled');
+    const {attending} = this.props;
     return(
       <ScrollView style={Styles.colorBody}>
         <View style={Styles.otherUserAppBody}>
@@ -18,8 +55,8 @@ export default class OtherUserScreen extends React.Component {
             <Ionicons name='ios-arrow-back' size={36} color='#FFA06E'/>
           </TouchableOpacity>
           <View id='userLogo' style={ProfileScreenStyle.userLogo}>
-            <Image source={{uri: this.props.picurl}} style={ProfileScreenStyle.image}/>
-            <Text style={Styles.headline}> {this.props.name}</Text>
+            <Image source={{uri: data.pic}} style={ProfileScreenStyle.image}/>
+            <Text style={Styles.headline}> {data.name}</Text>
             <Text style={Styles.secondBody}> This is the user title </Text>
           </View>
           <View id='accSettings'>
@@ -45,45 +82,10 @@ export default class OtherUserScreen extends React.Component {
             <Text style={Styles.subheader}> Recent Activities </Text>
             <View id='numberOfEvents' style={ProfileScreenStyle.numberOfEvents}>
               <Text style={Styles.hurray}>Hurray! You have attended</Text>
-              <Text style={Styles.numberOfEvents}>{(this.props.attending&&this.props.attending.length>0) ? this.props.attending.length : '0'} events</Text>
+              <Text style={Styles.numberOfEvents}>{(data.attending&&data.attending.length>0) ? data.attending.length : '0'} events</Text>
             </View>
             <View id='eventsAttended' style={ProfileScreenStyle.listOfEvents}>
-              <View style={ProfileScreenStyle.eventDetails}>
-                <View style= {{flex : 1, alignItems: 'center'}}>
-                  <Image
-                  style={Styles.eventIcon}
-                  source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
-                />
-                </View>
-                <View style={{flex : 3, justifyContent: 'space-around',}}>
-                  <Text style={ProfileScreenStyle.eventAchievementTime}>3 minutes ago</Text>
-                  <Text style={ProfileScreenStyle.eventAchievement}>You received medal Daxua</Text>
-                </View>
-              </View>
-              <View style={ProfileScreenStyle.eventDetails}>
-                <View style= {{flex : 1, alignItems: 'center'}}>
-                  <Image
-                  style={Styles.eventIcon}
-                  source={{uri: 'https://i.imgur.com/O6szkhx.png'}}
-                />
-                </View>
-                <View style={{flex : 3, justifyContent: 'space-around',}}>
-                  <Text style={ProfileScreenStyle.eventAchievementTime}>Yesterday, 20:00</Text>
-                  <Text style={ProfileScreenStyle.eventAchievement}>You checked in at Akali</Text>
-                </View>
-              </View>
-              <View style={ProfileScreenStyle.eventDetails}>
-                <View style= {{flex : 1, alignItems: 'center'}}>
-                  <Image
-                  style={Styles.eventIcon}
-                  source={{uri: 'https://i.imgur.com/kP814Ja.jpg'}}
-                />
-                </View>
-                <View style={{flex : 3, justifyContent: 'space-around',}}>
-                  <Text style={ProfileScreenStyle.eventAchievementTime}>24/09/2018, 20:00</Text>
-                  <Text style={ProfileScreenStyle.eventAchievement}>You attended Lee Sin</Text>
-                </View>
-              </View>
+              {!attending ? <View><Text>Give it a try!</Text></View> : attending.map(this.renderAttending)}
             </View>
           </View>
         </View>
@@ -91,3 +93,15 @@ export default class OtherUserScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    attending: state.reducer.attendingArray,
+  };
+};
+
+const mapDispatchToProps = {
+  fetchAttendingByArray
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(OtherUserScreen);

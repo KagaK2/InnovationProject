@@ -25,7 +25,6 @@ class ProfileScreen extends React.Component {
   }
   renderAttending(array){
     if(array[0] != undefined){
-      console.log(array[0]);
     return (
     <View key={array[0].id} style={ProfileScreenStyle.eventDetails}>
       <TouchableOpacity
