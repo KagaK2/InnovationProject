@@ -115,6 +115,7 @@ class ProfileScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state);
   return {
     id: state.reducer.id,
     name: state.reducer.name,

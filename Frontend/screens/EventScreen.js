@@ -81,11 +81,9 @@ class EventScreen extends React.Component {
 
   attendeeRender(arrayData){
     return(
-      <View>
       <TouchableOpacity key={arrayData.id} onPress={() => this._redirect(arrayData)}>
         <UserIcon image={arrayData.pic}/>
       </TouchableOpacity>
-      </View>
     );
   }
 

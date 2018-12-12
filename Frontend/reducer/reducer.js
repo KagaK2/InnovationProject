@@ -5,9 +5,7 @@ export default function reducer(state = {}, action){
     case SAVE_NAME_AND_PIC:
       return {name: action.name, picurl: action.picurl, id: action.id, ...state};
     case LOG_OUT:
-      delete state.name;
-      delete state.picurl;
-      return state;
+      return [];
     case FETCH_WEEK:
       return {week: action.payload, ...state};
     case FETCH_DAY:
