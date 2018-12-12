@@ -2,8 +2,9 @@ import React from 'react';
 import {ScrollView, View, Text, TouchableOpacity, Image} from 'react-native';
 import {Styles} from '../styles/componentstyle.js';
 import { Ionicons } from '@expo/vector-icons';
+import { connect } from 'react-redux';
 //Suppposedly to be the chat part/ discussion part of the app
-export default class DiscussionScreen extends React.Component {
+class DiscussionScreen extends React.Component {
   static navigationOptions = { header: null };
   _redirect = () => {
     console.log('oof');
@@ -29,7 +30,7 @@ export default class DiscussionScreen extends React.Component {
             >
               <Image
                 style={Styles.profileIcon}
-                source={{uri: 'https://i.imgur.com/M0ks2ba.png'}}
+                source={{uri: this.props.picurl}}
               />
             </TouchableOpacity>
           </View>
@@ -38,3 +39,11 @@ export default class DiscussionScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    picurl: state.reducer.picurl,
+  };
+}
+
+export default connect(mapStateToProps)(DiscussionScreen);

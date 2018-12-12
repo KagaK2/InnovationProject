@@ -61,16 +61,16 @@ class ProfileScreen extends React.Component {
           <Text style={[Styles.largeBody,ProfileScreenStyle.interest]}> Interests </Text>
           <View style={[Styles.list,ProfileScreenStyle.interest]}>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#Keywords</Text>
+              <TouchableOpacity><Text style={Styles.tagText}>#rock</Text></TouchableOpacity>
             </View>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#aren't</Text>
+              <TouchableOpacity><Text style={Styles.tagText}>#board-game</Text></TouchableOpacity>
             </View>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#implemented</Text>
+              <TouchableOpacity><Text style={Styles.tagText}>#soccer</Text></TouchableOpacity>
             </View>
             <View style={Styles.tags}>
-            <Text style={Styles.tagText}>#rightnow</Text>
+              <TouchableOpacity><Text style={Styles.tagText}>#martial-arts</Text></TouchableOpacity>
             </View>
             <TouchableOpacity style={[Styles.jumbo, ProfileScreenStyle.addMore]}><Text style={Styles.buttonText}>+</Text></TouchableOpacity>
           </View>
