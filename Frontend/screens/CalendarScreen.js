@@ -7,7 +7,7 @@ import * as HelAPI from '../scripts/HelAPI.js';
 import {fetchWeekEvent} from '../actions/index.js'
 import { connect } from 'react-redux';
 
-//Event for next 7 days. 
+//Event for next 7 days.
 class CalendarScreen extends React.Component {
   constructor(props){
     super(props);
@@ -46,7 +46,7 @@ class CalendarScreen extends React.Component {
           <FlatList
             style = {CalendarScreenStyle.boxWithShadow}
             data = {this.props.week}
-            renderItem = {({item}) => <BigCard onPress={() => this._redirect(item)} hashtag="theater" date={item.start_time ? item.start_time : item.end_time} eventName={item.name ? (item.name.en ? item.name.en : item.name.fi) : 'untitled'} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} going="Me and mah homies" />}
+            renderItem = {({item}) =>(item.name) && <BigCard onPress={() => this._redirect(item)} hashtag="theater" date={item.start_time ? item.start_time : item.end_time} eventName={item.name ? (item.name.en ? item.name.en : item.name.fi) : 'untitled'} pic={item.images.length>0 ? item.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'} going="Me and mah homies" />}
             keyExtractor = {this._keyExtractor}
             />
           </View>

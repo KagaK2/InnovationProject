@@ -34,6 +34,9 @@ class HomeScreen extends React.Component {
       }
     );
   }
+  _searchRedirect = () => {
+    this.props.navigation.navigate('Search');
+  }
   render(){
     return(
       <ScrollView style={Styles.colorBody}>
@@ -69,10 +72,10 @@ class HomeScreen extends React.Component {
           <View>
             <Text style={Styles.subheader}>Explore by topics!</Text>
             <View style={Styles.list}>
-              <ThumbnailCard pic='https://www.differencebetween.com/wp-content/uploads/2011/03/Fine-Art_Difference-Between-Fine-Art-and-Illustration.jpg' title='ART'/>
-              <ThumbnailCard pic='https://pmcvariety.files.wordpress.com/2018/05/u2-1.jpg' title='CONCERT'/>
-              <ThumbnailCard pic='http://thegame730am.com/files/2018/02/Basketball-Hoop2.jpg' title='SPORTS'/>
-              <ThumbnailCard pic='https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/search-thumbnail/uno-ubicom-search-thumbnail_mobile_259517.jpg' title='BOARDGAME'/>
+              <ThumbnailCard onPress={this._searchRedirect} pic='https://www.differencebetween.com/wp-content/uploads/2011/03/Fine-Art_Difference-Between-Fine-Art-and-Illustration.jpg' title='ART'/>
+              <ThumbnailCard onPress={this._searchRedirect} pic='https://pmcvariety.files.wordpress.com/2018/05/u2-1.jpg' title='CONCERT'/>
+              <ThumbnailCard onPress={this._searchRedirect} pic='http://thegame730am.com/files/2018/02/Basketball-Hoop2.jpg' title='SPORTS'/>
+              <ThumbnailCard onPress={this._searchRedirect} pic='https://ubistatic19-a.akamaihd.net/ubicomstatic/en-us/global/search-thumbnail/uno-ubicom-search-thumbnail_mobile_259517.jpg' title='BOARDGAME'/>
             </View>
           </View>
           <View style={HomeScreenStyle.pref}>
