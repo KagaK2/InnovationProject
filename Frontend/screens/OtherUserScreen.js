@@ -100,6 +100,7 @@ class OtherUserScreen extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state.reducer.attendingArray);
   return {
     attending: state.reducer.attendingArray,
   };

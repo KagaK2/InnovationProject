@@ -94,7 +94,7 @@ class EventScreen extends React.Component {
       <View>
       <ScrollView>
         <View>
-          <ImageBackground source={{uri: this.state.event.images.length > 0 ? this.state.event.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'}} style={{height: 200, width: '100%'}}>
+          <ImageBackground source={{uri:this.state.event.images ? ( this.state.event.images.length > 0 ? this.state.event.images[0].url : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg') : 'https://i.ytimg.com/vi/4eoM26ZmHd0/maxresdefault.jpg'}} style={{height: 200, width: '100%'}}>
             <TouchableOpacity onPress={this._goBack} title="Back" style={EventScreenStyle.backButton}>
               <Ionicons name='ios-arrow-back' size={36} color='#FFA06E'/>
             </TouchableOpacity>
