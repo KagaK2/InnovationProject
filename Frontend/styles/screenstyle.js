@@ -164,5 +164,18 @@ export const EventScreenStyle = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 50,
   },
+});
 
+export const SearchScreenStyle = StyleSheet.create({
+  mainScreen: {
+    marginTop: 120,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent:'center',
+  },
+  titleText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 15,
+  },
 });

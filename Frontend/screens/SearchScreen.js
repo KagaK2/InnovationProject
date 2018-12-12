@@ -2,7 +2,10 @@ import React from 'react';
 import {View, ScrollView, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import {Styles} from '../styles/componentstyle.js';
 import SearchBar from '../components/SearchBar.js';
+import {SearchScreenStyle} from '../styles/screenstyle.js';
 import { connect } from 'react-redux';
+import {Ionicons} from '@expo/vector-icons';
+
 //Are not implemented yet.
 class SearchScreen extends React.Component {
   constructor(props){
@@ -37,6 +40,11 @@ class SearchScreen extends React.Component {
           </View>
           <View style={{opacity: 0.3,flex:1, backgroundColor:'grey'}}>
           </View>
+        </View>
+        <View style={SearchScreenStyle.mainScreen}>
+          <Ionicons name='ios-search' size={100} color='#000000'/>
+          <Text style={SearchScreenStyle.titleText}>Find the event you want</Text>
+          <Text>Search for events, activities and more.</Text>
         </View>
       </ScrollView>
     );
